@@ -20,3 +20,7 @@ not be publishable. Test the native guard independently of JavaScript execution.
 Run python -B -m unittest discover -s tests -v, Node adapter tests, a network build
 and an offline replay. Stage explicit files only. Commit/push/merge/publish require
 authorization; the implementation request covers this new repository and its PR.
+
+Public rule/source/conversion authority: SHIKI1255/shadowrocket-config/shared.
+Consumers read versioned JSON data only; never execute downloaded source code.
+Do not reintroduce local custom/source copies. Client templates and protocol contracts stay here.

@@ -68,8 +68,5 @@ class Publication(unittest.TestCase):
             with self.assertRaises(b.BuildError): p.publish(Path('unused'))
             api.assert_not_called()
 
-    def test_unregistered_policy_conflict_stops(self):
-        _,conflicts,_=b.merge_rules([b.parse_rule('DOMAIN,a.example,DIRECT'),b.parse_rule('DOMAIN,a.example,PROXY')])
-        with self.assertRaises(b.BuildError): b.check_conflicts(conflicts,[])
 
 if __name__=='__main__': unittest.main()

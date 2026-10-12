@@ -27,6 +27,10 @@ def run(binary: Path, release: Path, geodata: Path, output: Path):
     require(not output.exists(), 'Native test directory must be new')
     output.mkdir(parents=True)
     shutil.copy2(geodata, output/'geosite.dat')
+    for name in ('Country.mmdb', 'ASN.mmdb'):
+        source = geodata.parent/name
+        require(source.is_file(), 'Native fixture requires explicit ' + name)
+        shutil.copy2(source, output/name)
     shutil.copytree(release/'rules', output/'ruleset/personal-clash')
     fixture = {'proxies': [], 'proxy-groups': [{'name': 'Fixture', 'type': 'select', 'proxies': ['DIRECT']}],
                'rules': ['MATCH,DIRECT'], 'ipv6': False}
@@ -59,7 +63,7 @@ def run(binary: Path, release: Path, geodata: Path, output: Path):
     with (output/'runtime.log').open('w', encoding='utf-8') as log:
         process = subprocess.Popen([str(binary), '-d', str(output), '-f', str(config_path)], stdout=log, stderr=log)
         try:
-            expected = {'personal_clash_'+p.stem: len(list(records(p.read_text(encoding='utf-8')))) for p in (release/'rules').glob('*.list')}
+            expected = {'shiki_'+name: count for name,count in json.loads((release/'manifest.json').read_text())['providers'].items()}
             actual = {}
             deadline = time.monotonic()+25
             while time.monotonic() < deadline:
@@ -70,7 +74,7 @@ def run(binary: Path, release: Path, geodata: Path, output: Path):
                 except (OSError, KeyError): pass
                 time.sleep(.2)
             require(actual == expected, f'Native parser silently skipped/failed rules: {actual} != {expected}')
-            for provider in ['personal_clash_personal_direct']:
+            for provider in ['shiki_personal_direct']:
                 try: api('/providers/rules/'+provider, 'PUT')
                 except urllib.error.HTTPError: pass
             after = {k: v['ruleCount'] for k,v in api('/providers/rules')['providers'].items()}
@@ -78,7 +82,7 @@ def run(binary: Path, release: Path, geodata: Path, output: Path):
             # Delete no user caches: a new intentionally absent test path is passed
             # through the native API config reload using this isolated process only.
             missing = json.loads(json.dumps(config))
-            victim = 'personal_clash_personal_direct'
+            victim = 'shiki_personal_direct'
             missing['rule-providers'][victim]['path'] = './never-created.list'
             missing['rule-providers'][victim]['url'] += '/fresh'
             fresh = output/'missing-cache.json'

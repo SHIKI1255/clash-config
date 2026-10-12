@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "client": "clash",
+  "providers": [
+    {
+      "id": "personal_direct",
+      "policy": "DIRECT"
+    },
+    {
+      "id": "personal_proxy",
+      "policy": "PROXY"
+    },
+    {
+      "id": "openai",
+      "policy": "PROXY"
+    },
+    {
+      "id": "claude",
+      "policy": "PROXY"
+    },
+    {
+      "id": "gemini",
+      "policy": "PROXY"
+    },
+    {
+      "id": "voice",
+      "policy": "PROXY"
+    },
+    {
+      "id": "copilot",
+      "policy": "PROXY"
+    },
+    {
+      "id": "github",
+      "policy": "PROXY"
+    },
+    {
+      "id": "telegram",
+      "policy": "PROXY"
+    },
+    {
+      "id": "google",
+      "policy": "PROXY"
+    },
+    {
+      "id": "twitter",
+      "policy": "PROXY"
+    },
+    {
+      "id": "tiktok",
+      "policy": "PROXY"
+    },
+    {
+      "id": "crypto",
+      "policy": "PROXY"
+    },
+    {
+      "id": "steam_cn",
+      "policy": "DIRECT"
+    },
+    {
+      "id": "steam",
+      "policy": "PROXY"
+    },
+    {
+      "id": "apple",
+      "policy": "DIRECT"
+    },
+    {
+      "id": "microsoft",
+      "policy": "DIRECT"
+    },
+    {
+      "id": "bilibili",
+      "policy": "DIRECT"
+    },
+    {
+      "id": "proxy",
+      "policy": "PROXY"
+    },
+    {
+      "id": "china",
+      "policy": "DIRECT"
+    }
+  ]
+}

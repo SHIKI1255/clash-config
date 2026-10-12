@@ -23,16 +23,20 @@ def download(url, expected):
 def main(output):
     require(not output.exists(), 'CI tools directory must be new')
     release=json.loads(fetch('https://api.github.com/repos/MetaCubeX/meta-rules-dat/releases/tags/latest'))
-    asset=next(x for x in release['assets'] if x['name']=='geosite.dat')
-    require(asset['browser_download_url']=='https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat', 'Unexpected geosite asset')
-    require(asset['digest'].startswith('sha256:'), 'Missing database download hash')
     core=gzip.decompress(download(CORE_URL, CORE_SHA))
-    data=download(asset['browser_download_url'],asset['digest'].split(':',1)[1])
+    databases = {}
+    hashes = {}
+    for target, name in [('geosite.dat','geosite.dat'),('Country.mmdb','geoip.metadb'),('ASN.mmdb','GeoLite2-ASN.mmdb')]:
+        asset=next(x for x in release['assets'] if x['name']==name)
+        require(asset['browser_download_url']=='https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/'+name, 'Unexpected database asset')
+        require(asset['digest'].startswith('sha256:'), 'Missing database download hash')
+        databases[target]=download(asset['browser_download_url'],asset['digest'].split(':',1)[1])
+        hashes[target]=asset['digest']
     output.mkdir(parents=True)
     (output/'mihomo').write_bytes(core); (output/'mihomo').chmod(0o700)
-    (output/'geosite.dat').write_bytes(data)
+    for name, data in databases.items(): (output/name).write_bytes(data)
     (output/'test-inputs.json').write_text(json.dumps({'core_version':'1.19.32','core_archive_sha256':CORE_SHA,
-        'geosite_sha256':asset['digest'],'geosite_release_id':release['id']},indent=2)+'\n')
+        'database_sha256':hashes,'database_release_id':release['id']},indent=2)+'\n')
     print('Native checker downloaded and hashes verified')
 
 if __name__=='__main__':
