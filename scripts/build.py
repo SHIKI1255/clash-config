@@ -499,6 +499,9 @@ def build(root: Path, conf: dict, lock: dict, inputs: dict, previous=None, audit
                   "THIRD_PARTY.md": (root / "docs/third_party.md").read_bytes(),
                   "INSTALL.md": (root / "docs/install.md").read_bytes()})
     bundle = {"guard.yaml": files["guard.yaml"], "override.js": output, "INSTALL.md": files["INSTALL.md"]}
+    bundle["THIRD_PARTY.md"] = files["THIRD_PARTY.md"]
+    bundle["LICENSE"] = (root / "LICENSE").read_bytes()
+    bundle.update({p: data for p, data in inputs.items() if p.startswith("licenses/")})
     bundle.update({"ruleset/personal-clash/" + p.removeprefix("rules/"): data
                    for p, data in rendered.items() if p.startswith("rules/")})
     bundle["bundle-manifest.json"] = json_bytes({"schema_version": 1,
