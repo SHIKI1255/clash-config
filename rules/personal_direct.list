@@ -1,0 +1,24 @@
+# personal_direct -- generated; do not edit
+DOMAIN-SUFFIX,erp.lingxing.com
+DOMAIN-SUFFIX,feishu.cn
+DOMAIN-SUFFIX,feishu.net
+DOMAIN-SUFFIX,larkoffice.com
+DOMAIN-SUFFIX,feishucdn.com
+DOMAIN-SUFFIX,ziniao.com
+DOMAIN-SUFFIX,uuyc.163.com
+DOMAIN-SUFFIX,uu.163.com
+DOMAIN-SUFFIX,snssdk.com
+DOMAIN-SUFFIX,bytedapm.com
+PROCESS-NAME,Feishu.exe
+PROCESS-NAME,Lark.exe
+PROCESS-NAME,ziniao.exe
+PROCESS-NAME,ziniaobrowser.exe
+PROCESS-NAME,ziniao-gateway.exe
+PROCESS-NAME,GameViewer.exe
+PROCESS-NAME,GameViewerHealthd.exe
+PROCESS-NAME,GameViewerServer.exe
+PROCESS-NAME,GameViewerService.exe
+PROCESS-NAME,biubiu.exe
+PROCESS-NAME,bbupdate.exe
+PROCESS-NAME,EpicSeven.exe
+PROCESS-NAME,DQJL.exe

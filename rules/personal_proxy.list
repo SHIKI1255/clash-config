@@ -1,0 +1,30 @@
+# personal_proxy -- generated; do not edit
+PROCESS-NAME,Twitch Drops Miner (by DevilXD).exe
+PROCESS-NAME,Codex.exe
+DOMAIN-SUFFIX,githubusercontent.com
+DOMAIN,cloudflare-dns.com
+DOMAIN,dns.google
+DOMAIN-SUFFIX,ipstatp.com
+DOMAIN-SUFFIX,copilot.com
+DOMAIN-SUFFIX,copilot.cloud.microsoft
+DOMAIN-SUFFIX,ct.sendgrid.net
+DOMAIN-SUFFIX,intercom.io
+DOMAIN-SUFFIX,intercomcdn.com
+DOMAIN,cdn.openaimerge.com
+DOMAIN,cdn.workos.com
+DOMAIN,challenges.cloudflare.com
+DOMAIN,forwarder.workos.com
+DOMAIN,frontend-apps-multi-region.workos.com
+DOMAIN,humb.apple.com
+DOMAIN,images.workoscdn.com
+DOMAIN,js.stripe.com
+DOMAIN,o207216.ingest.sentry.io
+DOMAIN,o33249.ingest.sentry.io
+DOMAIN,rum.browser-intake-datadoghq.com
+DOMAIN,setup.workos.com
+DOMAIN,workos.imgix.net
+DOMAIN,openai-api.arkoselabs.com
+DOMAIN,client-api.arkoselabs.com
+DOMAIN,api.statsig.com
+DOMAIN,events.statsigapi.net
+DOMAIN-SUFFIX,featuregates.org
