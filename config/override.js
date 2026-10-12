@@ -1,4 +1,4 @@
-// Generated release replaces the two placeholders. Install guard.yaml FIRST.
+// SHIKI1255-Rules | Clash. Generated release replaces the two placeholders. Install guard.yaml FIRST.
 // Rule mode only. Does not mutate ports, mode, TUN or the system proxy switch.
 function main(config, profileName) {
   const sources = __PROVIDERS_JSON__;
@@ -63,7 +63,7 @@ function main(config, profileName) {
   ncsi.forEach(d => { policy[d] = domestic; });
   const providers = {};
   sources.forEach(s => {
-    const id = 'personal_clash_' + s.id;
+    const id = 'shiki_' + s.id;
     providers[id] = {type: 'http', behavior: 'classical', format: 'text',
       url: 'https://raw.githubusercontent.com/SHIKI1255/clash-config/release/rules/' + s.id + '.list',
       path: './ruleset/personal-clash/' + s.id + '.list', interval: 86400, proxy: mainName};
@@ -93,8 +93,8 @@ function main(config, profileName) {
     if (values.length) nodePolicy[key] = values;
   });
   const clean = xs => list(xs).filter(s => typeof s === 'string' && !s.includes('checkout.mzxnyysm.com') &&
-    (!s.startsWith('rule-set:') || s === 'rule-set:personal_clash_personal_direct'));
-  const dynamicDirect = 'rule-set:personal_clash_personal_direct';
+    (!s.startsWith('rule-set:') || s === 'rule-set:shiki_personal_direct'));
+  const dynamicDirect = 'rule-set:shiki_personal_direct';
   const ips = baseline.filter(r => r.startsWith('IP-CIDR,')).map(r => r.split(',')[1]);
   const resolvers = nodeResolvers(oldDns['proxy-server-nameserver']);
   const dns = {
@@ -113,7 +113,7 @@ function main(config, profileName) {
   if (dns.ipv6) dns['fake-ip-range6'] = oldDns['fake-ip-range6'] || '2001:2::/64';
   config['proxy-groups'] = kept;
   config['rule-providers'] = providers;
-  config.rules = baseline.concat(sources.map(s => 'RULE-SET,personal_clash_' + s.id + ',' +
+  config.rules = baseline.concat(sources.map(s => 'RULE-SET,shiki_' + s.id + ',' +
     (s.policy === 'DIRECT' ? 'DIRECT' : mainName))).concat(['GEOIP,CN,DIRECT', 'MATCH,' + mainName]);
   config.dns = dns;
   config['tcp-concurrent'] = true;

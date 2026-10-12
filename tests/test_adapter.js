@@ -5,9 +5,7 @@ const vm = require('node:vm');
 const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const guard = JSON.parse(fs.readFileSync(path.join(root, 'config/bootstrap.json'), 'utf8'));
-const conf = JSON.parse(fs.readFileSync(path.join(root, 'config/sources.yaml'), 'utf8'));
-const descriptors = [{id: 'personal_direct', policy: 'DIRECT'}, {id: 'personal_proxy', policy: 'PROXY'}]
-  .concat(conf.sources.map(s => ({id: s.id, policy: s.policy})));
+const descriptors = JSON.parse(fs.readFileSync(path.join(root, 'config/shared.json'), 'utf8')).providers;
 const source = fs.readFileSync(path.join(root, 'config/override.js'), 'utf8')
   .replace('__PROVIDERS_JSON__', JSON.stringify(descriptors))
   .replace('__BASELINE_JSON__', JSON.stringify(guard.rules.slice(0, -1)));
@@ -52,8 +50,8 @@ for (const name of ['GeekSpeed极客加速器', '雪橇云']) {
     assert.equal(JSON.stringify(c).includes('#PROXY'), false);
     assert.equal(c.dns.nameserver.every(s => s.endsWith('#' + name)), true);
     assert.equal(Object.values(c['rule-providers']).every(p => p.proxy === name), true);
-    assert.equal(c.dns['nameserver-policy']['rule-set:personal_clash_personal_direct'][0].endsWith('#DIRECT'), true);
-    assert.equal(c.dns['fake-ip-filter'].includes('rule-set:personal_clash_personal_direct'), true);
+    assert.equal(c.dns['nameserver-policy']['rule-set:shiki_personal_direct'][0].endsWith('#DIRECT'), true);
+    assert.equal(c.dns['fake-ip-filter'].includes('rule-set:shiki_personal_direct'), true);
     assert.deepEqual(c.dns['proxy-server-nameserver-policy']['entry.example'], ['223.5.5.5#DIRECT']);
     assert.deepEqual(apply(c, name).config, c);
   });
@@ -124,18 +122,18 @@ test('provider main DIRECT choice is preserved', () => {
 test('DNS policy order follows business rule sources', () => {
   const c = apply(fixture('Provider'), 'Provider').config;
   const a = Object.keys(c.dns['nameserver-policy']);
-  assert.ok(a.indexOf('rule-set:personal_clash_copilot') < a.indexOf('rule-set:personal_clash_microsoft'));
-  assert.ok(a.indexOf('rule-set:personal_clash_steam_cn') < a.indexOf('rule-set:personal_clash_steam'));
+  assert.ok(a.indexOf('rule-set:shiki_copilot') < a.indexOf('rule-set:shiki_microsoft'));
+  assert.ok(a.indexOf('rule-set:shiki_steam_cn') < a.indexOf('rule-set:shiki_steam'));
 });
 test('voice stays in routing while only its DNS selector disappears', () => {
   const c = apply(fixture('Provider'), 'Provider').config;
-  assert.deepEqual(Object.keys(c['rule-providers']), descriptors.map(s => 'personal_clash_' + s.id));
+  assert.deepEqual(Object.keys(c['rule-providers']), descriptors.map(s => 'shiki_' + s.id));
   assert.deepEqual(c.rules.slice(guard.rules.length - 1, -2), descriptors.map(s =>
-    'RULE-SET,personal_clash_' + s.id + ',' + (s.policy === 'DIRECT' ? 'DIRECT' : 'Provider')));
+    'RULE-SET,shiki_' + s.id + ',' + (s.policy === 'DIRECT' ? 'DIRECT' : 'Provider')));
   const keys = Object.keys(c.dns['nameserver-policy']);
   assert.deepEqual(keys.filter(k => k.startsWith('rule-set:')),
-    descriptors.filter(s => s.id !== 'voice').map(s => 'rule-set:personal_clash_' + s.id));
-  const voice = c['rule-providers'].personal_clash_voice;
+    descriptors.filter(s => s.id !== 'voice').map(s => 'rule-set:shiki_' + s.id));
+  const voice = c['rule-providers'].shiki_voice;
   assert.equal(voice.url, 'https://raw.githubusercontent.com/SHIKI1255/clash-config/release/rules/voice.list');
   assert.equal(voice.path, './ruleset/personal-clash/voice.list');
   assert.equal(voice.interval, 86400); assert.equal(voice.proxy, 'Provider');
