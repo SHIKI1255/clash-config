@@ -1,7 +1,7 @@
-// Generated release replaces the two placeholders. Install guard.yaml FIRST.
+// SHIKI1255-Rules | Clash. Generated release replaces the two placeholders. Install guard.yaml FIRST.
 // Rule mode only. Does not mutate ports, mode, TUN or the system proxy switch.
 function main(config, profileName) {
-  const sources = [{"id": "personal_direct", "policy": "DIRECT"}, {"id": "personal_proxy", "policy": "PROXY"}, {"id": "openai", "policy": "PROXY"}, {"id": "claude", "policy": "PROXY"}, {"id": "gemini", "policy": "PROXY"}, {"id": "voice", "policy": "PROXY"}, {"id": "copilot", "policy": "PROXY"}, {"id": "github", "policy": "PROXY"}, {"id": "telegram", "policy": "PROXY"}, {"id": "google", "policy": "PROXY"}, {"id": "twitter", "policy": "PROXY"}, {"id": "tiktok", "policy": "PROXY"}, {"id": "crypto", "policy": "PROXY"}, {"id": "steam_cn", "policy": "DIRECT"}, {"id": "steam", "policy": "PROXY"}, {"id": "apple", "policy": "DIRECT"}, {"id": "apple_domains", "policy": "DIRECT"}, {"id": "microsoft", "policy": "DIRECT"}, {"id": "bilibili", "policy": "DIRECT"}, {"id": "proxy", "policy": "PROXY"}, {"id": "proxy_domains", "policy": "PROXY"}, {"id": "china", "policy": "DIRECT"}, {"id": "china_domains", "policy": "DIRECT"}];
+  const sources = [{"id": "personal_direct", "policy": "DIRECT"}, {"id": "personal_proxy", "policy": "PROXY"}, {"id": "openai", "policy": "PROXY"}, {"id": "claude", "policy": "PROXY"}, {"id": "gemini", "policy": "PROXY"}, {"id": "voice", "policy": "PROXY"}, {"id": "copilot", "policy": "PROXY"}, {"id": "github", "policy": "PROXY"}, {"id": "telegram", "policy": "PROXY"}, {"id": "google", "policy": "PROXY"}, {"id": "twitter", "policy": "PROXY"}, {"id": "tiktok", "policy": "PROXY"}, {"id": "crypto", "policy": "PROXY"}, {"id": "steam_cn", "policy": "DIRECT"}, {"id": "steam", "policy": "PROXY"}, {"id": "apple", "policy": "DIRECT"}, {"id": "microsoft", "policy": "DIRECT"}, {"id": "bilibili", "policy": "DIRECT"}, {"id": "proxy", "policy": "PROXY"}, {"id": "china", "policy": "DIRECT"}];
   const baseline = ["IP-CIDR,127.0.0.0/8,DIRECT,no-resolve", "IP-CIDR,10.0.0.0/8,DIRECT,no-resolve", "IP-CIDR,100.64.0.0/10,DIRECT,no-resolve", "IP-CIDR,169.254.0.0/16,DIRECT,no-resolve", "IP-CIDR,172.16.0.0/12,DIRECT,no-resolve", "IP-CIDR,192.168.0.0/16,DIRECT,no-resolve", "IP-CIDR,224.0.0.0/4,DIRECT,no-resolve", "IP-CIDR,255.255.255.255/32,DIRECT,no-resolve", "IP-CIDR,::1/128,DIRECT,no-resolve", "IP-CIDR,fc00::/7,DIRECT,no-resolve", "IP-CIDR,fe80::/10,DIRECT,no-resolve", "IP-CIDR,ff00::/8,DIRECT,no-resolve", "DOMAIN-SUFFIX,localhost,DIRECT", "DOMAIN-SUFFIX,lan,DIRECT", "DOMAIN-SUFFIX,local,DIRECT", "DOMAIN-SUFFIX,home.arpa,DIRECT", "DOMAIN-SUFFIX,msftconnecttest.com,DIRECT", "DOMAIN-SUFFIX,msftncsi.com,DIRECT", "DOMAIN,dns.alidns.com,DIRECT", "DOMAIN,doh.pub,DIRECT", "DOMAIN,dns.pub,DIRECT", "DOMAIN-SUFFIX,pool.ntp.org,DIRECT"];
   const list = value => Array.isArray(value) ? value : [];
   const uniq = values => Array.from(new Set(values));
@@ -63,7 +63,7 @@ function main(config, profileName) {
   ncsi.forEach(d => { policy[d] = domestic; });
   const providers = {};
   sources.forEach(s => {
-    const id = 'personal_clash_' + s.id;
+    const id = 'shiki_' + s.id;
     providers[id] = {type: 'http', behavior: 'classical', format: 'text',
       url: 'https://raw.githubusercontent.com/SHIKI1255/clash-config/release/rules/' + s.id + '.list',
       path: './ruleset/personal-clash/' + s.id + '.list', interval: 86400, proxy: mainName};
@@ -93,8 +93,8 @@ function main(config, profileName) {
     if (values.length) nodePolicy[key] = values;
   });
   const clean = xs => list(xs).filter(s => typeof s === 'string' && !s.includes('checkout.mzxnyysm.com') &&
-    (!s.startsWith('rule-set:') || s === 'rule-set:personal_clash_personal_direct'));
-  const dynamicDirect = 'rule-set:personal_clash_personal_direct';
+    (!s.startsWith('rule-set:') || s === 'rule-set:shiki_personal_direct'));
+  const dynamicDirect = 'rule-set:shiki_personal_direct';
   const ips = baseline.filter(r => r.startsWith('IP-CIDR,')).map(r => r.split(',')[1]);
   const resolvers = nodeResolvers(oldDns['proxy-server-nameserver']);
   const dns = {
@@ -113,7 +113,7 @@ function main(config, profileName) {
   if (dns.ipv6) dns['fake-ip-range6'] = oldDns['fake-ip-range6'] || '2001:2::/64';
   config['proxy-groups'] = kept;
   config['rule-providers'] = providers;
-  config.rules = baseline.concat(sources.map(s => 'RULE-SET,personal_clash_' + s.id + ',' +
+  config.rules = baseline.concat(sources.map(s => 'RULE-SET,shiki_' + s.id + ',' +
     (s.policy === 'DIRECT' ? 'DIRECT' : mainName))).concat(['GEOIP,CN,DIRECT', 'MATCH,' + mainName]);
   config.dns = dns;
   config['tcp-concurrent'] = true;

@@ -1,5 +1,5 @@
 {
-  "config_sha256": "d3e23f9a9ae440558eb71b6acf8da53c5a5a8931910a21f8cb4f498e67f0d44a",
+  "config_sha256": "22e0851219567a52445a6e7685f15e578d665eda18070aebb88b035bd31b624e",
   "conflicts": [
     {
       "later": "DIRECT",
@@ -278,10 +278,8 @@
   "guard_sha256": "5f834887b0a8ceccef89682902d0197255f3f037619182770f7ddde51e313574",
   "providers": {
     "apple": 1593,
-    "apple_domains": 0,
     "bilibili": 129,
     "china": 3657,
-    "china_domains": 0,
     "claude": 9,
     "copilot": 16,
     "crypto": 204,
@@ -291,9 +289,8 @@
     "microsoft": 668,
     "openai": 20,
     "personal_direct": 23,
-    "personal_proxy": 29,
-    "proxy": 6771,
-    "proxy_domains": 0,
+    "personal_proxy": 40,
+    "proxy": 6769,
     "steam": 54,
     "steam_cn": 17,
     "telegram": 46,
@@ -301,7 +298,7 @@
     "twitter": 33,
     "voice": 23
   },
-  "removed_exact_duplicates": 12344,
+  "removed_exact_duplicates": 12346,
   "routing_cases": [
     {
       "actual": {
@@ -686,10 +683,10 @@
     {
       "actual": {
         "policy": "PROXY",
-        "rule": "DOMAIN,client-api.arkoselabs.com,PROXY",
+        "rule": "DOMAIN-SUFFIX,client-api.arkoselabs.com,PROXY",
         "source": "personal_proxy"
       },
-      "expected_rule": "DOMAIN,client-api.arkoselabs.com,PROXY",
+      "expected_rule": "DOMAIN-SUFFIX,client-api.arkoselabs.com,PROXY",
       "input": {
         "domain": "client-api.arkoselabs.com"
       },
@@ -712,10 +709,10 @@
     {
       "actual": {
         "policy": "PROXY",
-        "rule": "DOMAIN,events.statsigapi.net,PROXY",
+        "rule": "DOMAIN-SUFFIX,events.statsigapi.net,PROXY",
         "source": "personal_proxy"
       },
-      "expected_rule": "DOMAIN,events.statsigapi.net,PROXY",
+      "expected_rule": "DOMAIN-SUFFIX,events.statsigapi.net,PROXY",
       "input": {
         "domain": "events.statsigapi.net"
       },
@@ -872,10 +869,10 @@
     {
       "actual": {
         "policy": "PROXY",
-        "rule": "DOMAIN,copilot.microsoft.com,PROXY",
-        "source": "copilot"
+        "rule": "DOMAIN-SUFFIX,copilot.microsoft.com,PROXY",
+        "source": "personal_proxy"
       },
-      "expected_rule": "DOMAIN,copilot.microsoft.com,PROXY",
+      "expected_rule": "DOMAIN-SUFFIX,copilot.microsoft.com,PROXY",
       "input": {
         "domain": "copilot.microsoft.com"
       },
@@ -996,8 +993,8 @@
     {
       "actual": {
         "policy": "PROXY",
-        "rule": "DOMAIN-SUFFIX,tiktokcdn.com,PROXY",
-        "source": "tiktok"
+        "rule": "DOMAIN-KEYWORD,tiktokcdn,PROXY",
+        "source": "personal_proxy"
       },
       "input": {
         "domain": "tiktokcdn.com"
@@ -1021,7 +1018,7 @@
       "actual": {
         "policy": "PROXY",
         "rule": "DOMAIN-SUFFIX,byteoversea.com,PROXY",
-        "source": "proxy"
+        "source": "personal_proxy"
       },
       "input": {
         "domain": "byteoversea.com"
@@ -1033,7 +1030,7 @@
       "actual": {
         "policy": "PROXY",
         "rule": "DOMAIN-SUFFIX,ibytedtos.com,PROXY",
-        "source": "proxy"
+        "source": "personal_proxy"
       },
       "input": {
         "domain": "ibytedtos.com"
@@ -1141,7 +1138,7 @@
       "actual": {
         "policy": "DIRECT",
         "rule": "DOMAIN-SUFFIX,lan,DIRECT",
-        "source": "baseline"
+        "source": "local_direct"
       },
       "expected_rule": "DOMAIN-SUFFIX,lan,DIRECT",
       "input": {
@@ -1154,7 +1151,7 @@
       "actual": {
         "policy": "DIRECT",
         "rule": "DOMAIN-SUFFIX,local,DIRECT",
-        "source": "baseline"
+        "source": "local_direct"
       },
       "expected_rule": "DOMAIN-SUFFIX,local,DIRECT",
       "input": {
@@ -1167,7 +1164,7 @@
       "actual": {
         "policy": "DIRECT",
         "rule": "DOMAIN-SUFFIX,home.arpa,DIRECT",
-        "source": "baseline"
+        "source": "local_direct"
       },
       "expected_rule": "DOMAIN-SUFFIX,home.arpa,DIRECT",
       "input": {
@@ -1192,7 +1189,7 @@
       "actual": {
         "policy": "DIRECT",
         "rule": "DOMAIN-SUFFIX,pool.ntp.org,DIRECT",
-        "source": "baseline"
+        "source": "local_direct"
       },
       "expected_rule": "DOMAIN-SUFFIX,pool.ntp.org,DIRECT",
       "input": {
@@ -1217,7 +1214,7 @@
       "actual": {
         "policy": "DIRECT",
         "rule": "DOMAIN,dns.alidns.com,DIRECT",
-        "source": "baseline"
+        "source": "local_direct"
       },
       "expected_rule": "DOMAIN,dns.alidns.com,DIRECT",
       "input": {
@@ -1243,7 +1240,7 @@
       "actual": {
         "policy": "DIRECT",
         "rule": "GEOIP,CN,DIRECT",
-        "source": "fallback"
+        "source": "geoip_cn"
       },
       "expected_rule": "GEOIP,CN,DIRECT",
       "input": {
@@ -1259,7 +1256,7 @@
       "actual": {
         "policy": "PROXY",
         "rule": "MATCH,PROXY",
-        "source": "fallback"
+        "source": "final_proxy"
       },
       "expected_rule": "MATCH,PROXY",
       "input": {
@@ -1275,7 +1272,7 @@
       "actual": {
         "policy": "UNRESOLVED",
         "rule": "MATCH,PROXY",
-        "source": "fallback"
+        "source": "final_proxy"
       },
       "input": {
         "domain": "checkout.mzxnyysm.com"
@@ -1287,7 +1284,7 @@
       "actual": {
         "policy": "DIRECT",
         "rule": "GEOIP,CN,DIRECT",
-        "source": "fallback"
+        "source": "geoip_cn"
       },
       "expected_rule": "GEOIP,CN,DIRECT",
       "input": {
@@ -1303,7 +1300,7 @@
       "actual": {
         "policy": "PROXY",
         "rule": "MATCH,PROXY",
-        "source": "fallback"
+        "source": "final_proxy"
       },
       "expected_rule": "MATCH,PROXY",
       "input": {
@@ -1319,7 +1316,7 @@
       "actual": {
         "policy": "UNRESOLVED",
         "rule": "MATCH,PROXY",
-        "source": "fallback"
+        "source": "final_proxy"
       },
       "input": {
         "domain": "sub.checkout.mzxnyysm.com"
@@ -1331,7 +1328,7 @@
       "actual": {
         "policy": "DIRECT",
         "rule": "IP-CIDR,127.0.0.0/8,DIRECT,no-resolve",
-        "source": "baseline"
+        "source": "local_direct"
       },
       "input": {
         "ip": "127.0.0.1"
@@ -1343,7 +1340,7 @@
       "actual": {
         "policy": "DIRECT",
         "rule": "IP-CIDR,192.168.0.0/16,DIRECT,no-resolve",
-        "source": "baseline"
+        "source": "local_direct"
       },
       "input": {
         "ip": "192.168.1.1"
@@ -1355,7 +1352,7 @@
       "actual": {
         "policy": "DIRECT",
         "rule": "IP-CIDR,10.0.0.0/8,DIRECT,no-resolve",
-        "source": "baseline"
+        "source": "local_direct"
       },
       "input": {
         "ip": "10.0.0.1"
@@ -1367,7 +1364,7 @@
       "actual": {
         "policy": "DIRECT",
         "rule": "IP-CIDR,172.16.0.0/12,DIRECT,no-resolve",
-        "source": "baseline"
+        "source": "local_direct"
       },
       "input": {
         "ip": "172.16.3.1"
@@ -1379,7 +1376,7 @@
       "actual": {
         "policy": "DIRECT",
         "rule": "IP-CIDR,169.254.0.0/16,DIRECT,no-resolve",
-        "source": "baseline"
+        "source": "local_direct"
       },
       "input": {
         "ip": "169.254.1.1"
@@ -1391,7 +1388,7 @@
       "actual": {
         "policy": "DIRECT",
         "rule": "IP-CIDR,::1/128,DIRECT,no-resolve",
-        "source": "baseline"
+        "source": "local_direct"
       },
       "input": {
         "ip": "::1"
@@ -1403,7 +1400,7 @@
       "actual": {
         "policy": "DIRECT",
         "rule": "IP-CIDR,fc00::/7,DIRECT,no-resolve",
-        "source": "baseline"
+        "source": "local_direct"
       },
       "input": {
         "ip": "fd00::1"
@@ -1415,7 +1412,7 @@
       "actual": {
         "policy": "DIRECT",
         "rule": "IP-CIDR,fe80::/10,DIRECT,no-resolve",
-        "source": "baseline"
+        "source": "local_direct"
       },
       "input": {
         "ip": "fe80::1"
@@ -1427,7 +1424,7 @@
       "actual": {
         "policy": "DIRECT",
         "rule": "GEOIP,CN,DIRECT",
-        "source": "fallback"
+        "source": "geoip_cn"
       },
       "input": {
         "asn": "9999",
@@ -1442,7 +1439,7 @@
       "actual": {
         "policy": "PROXY",
         "rule": "MATCH,PROXY",
-        "source": "fallback"
+        "source": "final_proxy"
       },
       "input": {
         "asn": "15169",
@@ -1457,7 +1454,7 @@
       "actual": {
         "policy": "DIRECT",
         "rule": "DOMAIN,doh.pub,DIRECT",
-        "source": "baseline"
+        "source": "local_direct"
       },
       "expected_rule": "DOMAIN,doh.pub,DIRECT",
       "input": {
@@ -1470,7 +1467,7 @@
       "actual": {
         "policy": "DIRECT",
         "rule": "DOMAIN,dns.pub,DIRECT",
-        "source": "baseline"
+        "source": "local_direct"
       },
       "expected_rule": "DOMAIN,dns.pub,DIRECT",
       "input": {
@@ -1849,7 +1846,7 @@
       "actual": {
         "policy": "PROXY",
         "rule": "MATCH,PROXY",
-        "source": "fallback"
+        "source": "final_proxy"
       },
       "expected_rule": "MATCH,PROXY",
       "input": {
@@ -1860,21 +1857,1152 @@
       },
       "name": "Unrelated shared auth0 not AI",
       "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "DIRECT",
+        "rule": "DOMAIN-SUFFIX,erp.lingxing.com,DIRECT",
+        "source": "personal_direct"
+      },
+      "expected_category": "personal_direct",
+      "expected_rule": "DOMAIN-SUFFIX,erp.lingxing.com,DIRECT",
+      "input": {
+        "domain": "erp.lingxing.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX erp.lingxing.com",
+      "policy": "DIRECT"
+    },
+    {
+      "actual": {
+        "policy": "DIRECT",
+        "rule": "DOMAIN-SUFFIX,erp.lingxing.com,DIRECT",
+        "source": "personal_direct"
+      },
+      "expected_category": "personal_direct",
+      "expected_rule": "DOMAIN-SUFFIX,erp.lingxing.com,DIRECT",
+      "input": {
+        "domain": "child.erp.lingxing.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.erp.lingxing.com",
+      "policy": "DIRECT"
+    },
+    {
+      "actual": {
+        "policy": "DIRECT",
+        "rule": "DOMAIN-SUFFIX,feishu.cn,DIRECT",
+        "source": "personal_direct"
+      },
+      "expected_category": "personal_direct",
+      "expected_rule": "DOMAIN-SUFFIX,feishu.cn,DIRECT",
+      "input": {
+        "domain": "feishu.cn"
+      },
+      "name": "Unified DOMAIN-SUFFIX feishu.cn",
+      "policy": "DIRECT"
+    },
+    {
+      "actual": {
+        "policy": "DIRECT",
+        "rule": "DOMAIN-SUFFIX,feishu.cn,DIRECT",
+        "source": "personal_direct"
+      },
+      "expected_category": "personal_direct",
+      "expected_rule": "DOMAIN-SUFFIX,feishu.cn,DIRECT",
+      "input": {
+        "domain": "child.feishu.cn"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.feishu.cn",
+      "policy": "DIRECT"
+    },
+    {
+      "actual": {
+        "policy": "DIRECT",
+        "rule": "DOMAIN-SUFFIX,feishu.net,DIRECT",
+        "source": "personal_direct"
+      },
+      "expected_category": "personal_direct",
+      "expected_rule": "DOMAIN-SUFFIX,feishu.net,DIRECT",
+      "input": {
+        "domain": "feishu.net"
+      },
+      "name": "Unified DOMAIN-SUFFIX feishu.net",
+      "policy": "DIRECT"
+    },
+    {
+      "actual": {
+        "policy": "DIRECT",
+        "rule": "DOMAIN-SUFFIX,feishu.net,DIRECT",
+        "source": "personal_direct"
+      },
+      "expected_category": "personal_direct",
+      "expected_rule": "DOMAIN-SUFFIX,feishu.net,DIRECT",
+      "input": {
+        "domain": "child.feishu.net"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.feishu.net",
+      "policy": "DIRECT"
+    },
+    {
+      "actual": {
+        "policy": "DIRECT",
+        "rule": "DOMAIN-SUFFIX,larkoffice.com,DIRECT",
+        "source": "personal_direct"
+      },
+      "expected_category": "personal_direct",
+      "expected_rule": "DOMAIN-SUFFIX,larkoffice.com,DIRECT",
+      "input": {
+        "domain": "larkoffice.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX larkoffice.com",
+      "policy": "DIRECT"
+    },
+    {
+      "actual": {
+        "policy": "DIRECT",
+        "rule": "DOMAIN-SUFFIX,larkoffice.com,DIRECT",
+        "source": "personal_direct"
+      },
+      "expected_category": "personal_direct",
+      "expected_rule": "DOMAIN-SUFFIX,larkoffice.com,DIRECT",
+      "input": {
+        "domain": "child.larkoffice.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.larkoffice.com",
+      "policy": "DIRECT"
+    },
+    {
+      "actual": {
+        "policy": "DIRECT",
+        "rule": "DOMAIN-SUFFIX,feishucdn.com,DIRECT",
+        "source": "personal_direct"
+      },
+      "expected_category": "personal_direct",
+      "expected_rule": "DOMAIN-SUFFIX,feishucdn.com,DIRECT",
+      "input": {
+        "domain": "feishucdn.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX feishucdn.com",
+      "policy": "DIRECT"
+    },
+    {
+      "actual": {
+        "policy": "DIRECT",
+        "rule": "DOMAIN-SUFFIX,feishucdn.com,DIRECT",
+        "source": "personal_direct"
+      },
+      "expected_category": "personal_direct",
+      "expected_rule": "DOMAIN-SUFFIX,feishucdn.com,DIRECT",
+      "input": {
+        "domain": "child.feishucdn.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.feishucdn.com",
+      "policy": "DIRECT"
+    },
+    {
+      "actual": {
+        "policy": "DIRECT",
+        "rule": "DOMAIN-SUFFIX,ziniao.com,DIRECT",
+        "source": "personal_direct"
+      },
+      "expected_category": "personal_direct",
+      "expected_rule": "DOMAIN-SUFFIX,ziniao.com,DIRECT",
+      "input": {
+        "domain": "ziniao.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX ziniao.com",
+      "policy": "DIRECT"
+    },
+    {
+      "actual": {
+        "policy": "DIRECT",
+        "rule": "DOMAIN-SUFFIX,ziniao.com,DIRECT",
+        "source": "personal_direct"
+      },
+      "expected_category": "personal_direct",
+      "expected_rule": "DOMAIN-SUFFIX,ziniao.com,DIRECT",
+      "input": {
+        "domain": "child.ziniao.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.ziniao.com",
+      "policy": "DIRECT"
+    },
+    {
+      "actual": {
+        "policy": "DIRECT",
+        "rule": "DOMAIN-SUFFIX,uuyc.163.com,DIRECT",
+        "source": "personal_direct"
+      },
+      "expected_category": "personal_direct",
+      "expected_rule": "DOMAIN-SUFFIX,uuyc.163.com,DIRECT",
+      "input": {
+        "domain": "uuyc.163.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX uuyc.163.com",
+      "policy": "DIRECT"
+    },
+    {
+      "actual": {
+        "policy": "DIRECT",
+        "rule": "DOMAIN-SUFFIX,uuyc.163.com,DIRECT",
+        "source": "personal_direct"
+      },
+      "expected_category": "personal_direct",
+      "expected_rule": "DOMAIN-SUFFIX,uuyc.163.com,DIRECT",
+      "input": {
+        "domain": "child.uuyc.163.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.uuyc.163.com",
+      "policy": "DIRECT"
+    },
+    {
+      "actual": {
+        "policy": "DIRECT",
+        "rule": "DOMAIN-SUFFIX,uu.163.com,DIRECT",
+        "source": "personal_direct"
+      },
+      "expected_category": "personal_direct",
+      "expected_rule": "DOMAIN-SUFFIX,uu.163.com,DIRECT",
+      "input": {
+        "domain": "uu.163.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX uu.163.com",
+      "policy": "DIRECT"
+    },
+    {
+      "actual": {
+        "policy": "DIRECT",
+        "rule": "DOMAIN-SUFFIX,uu.163.com,DIRECT",
+        "source": "personal_direct"
+      },
+      "expected_category": "personal_direct",
+      "expected_rule": "DOMAIN-SUFFIX,uu.163.com,DIRECT",
+      "input": {
+        "domain": "child.uu.163.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.uu.163.com",
+      "policy": "DIRECT"
+    },
+    {
+      "actual": {
+        "policy": "DIRECT",
+        "rule": "DOMAIN-SUFFIX,snssdk.com,DIRECT",
+        "source": "personal_direct"
+      },
+      "expected_category": "personal_direct",
+      "expected_rule": "DOMAIN-SUFFIX,snssdk.com,DIRECT",
+      "input": {
+        "domain": "snssdk.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX snssdk.com",
+      "policy": "DIRECT"
+    },
+    {
+      "actual": {
+        "policy": "DIRECT",
+        "rule": "DOMAIN-SUFFIX,snssdk.com,DIRECT",
+        "source": "personal_direct"
+      },
+      "expected_category": "personal_direct",
+      "expected_rule": "DOMAIN-SUFFIX,snssdk.com,DIRECT",
+      "input": {
+        "domain": "child.snssdk.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.snssdk.com",
+      "policy": "DIRECT"
+    },
+    {
+      "actual": {
+        "policy": "DIRECT",
+        "rule": "DOMAIN-SUFFIX,bytedapm.com,DIRECT",
+        "source": "personal_direct"
+      },
+      "expected_category": "personal_direct",
+      "expected_rule": "DOMAIN-SUFFIX,bytedapm.com,DIRECT",
+      "input": {
+        "domain": "bytedapm.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX bytedapm.com",
+      "policy": "DIRECT"
+    },
+    {
+      "actual": {
+        "policy": "DIRECT",
+        "rule": "DOMAIN-SUFFIX,bytedapm.com,DIRECT",
+        "source": "personal_direct"
+      },
+      "expected_category": "personal_direct",
+      "expected_rule": "DOMAIN-SUFFIX,bytedapm.com,DIRECT",
+      "input": {
+        "domain": "child.bytedapm.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.bytedapm.com",
+      "policy": "DIRECT"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,apple-relay.akamaized.net,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,apple-relay.akamaized.net,PROXY",
+      "input": {
+        "domain": "apple-relay.akamaized.net"
+      },
+      "name": "Unified DOMAIN-SUFFIX apple-relay.akamaized.net",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,apple-relay.akamaized.net,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,apple-relay.akamaized.net,PROXY",
+      "input": {
+        "domain": "child.apple-relay.akamaized.net"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.apple-relay.akamaized.net",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,apple-relay.apple.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,apple-relay.apple.com,PROXY",
+      "input": {
+        "domain": "apple-relay.apple.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX apple-relay.apple.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,apple-relay.apple.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,apple-relay.apple.com,PROXY",
+      "input": {
+        "domain": "child.apple-relay.apple.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.apple-relay.apple.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,apple-relay.cloudflare.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,apple-relay.cloudflare.com,PROXY",
+      "input": {
+        "domain": "apple-relay.cloudflare.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX apple-relay.cloudflare.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,apple-relay.cloudflare.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,apple-relay.cloudflare.com,PROXY",
+      "input": {
+        "domain": "child.apple-relay.cloudflare.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.apple-relay.cloudflare.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,apple-relay.fastly-edge.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,apple-relay.fastly-edge.com,PROXY",
+      "input": {
+        "domain": "apple-relay.fastly-edge.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX apple-relay.fastly-edge.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,apple-relay.fastly-edge.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,apple-relay.fastly-edge.com,PROXY",
+      "input": {
+        "domain": "child.apple-relay.fastly-edge.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.apple-relay.fastly-edge.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,apple-relay.mask.apple-dns.net,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,apple-relay.mask.apple-dns.net,PROXY",
+      "input": {
+        "domain": "apple-relay.mask.apple-dns.net"
+      },
+      "name": "Unified DOMAIN-SUFFIX apple-relay.mask.apple-dns.net",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,apple-relay.mask.apple-dns.net,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,apple-relay.mask.apple-dns.net,PROXY",
+      "input": {
+        "domain": "child.apple-relay.mask.apple-dns.net"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.apple-relay.mask.apple-dns.net",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN,cp4.cloudflare.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN,cp4.cloudflare.com,PROXY",
+      "input": {
+        "domain": "cp4.cloudflare.com"
+      },
+      "name": "Unified DOMAIN cp4.cloudflare.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,copilot.microsoft.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,copilot.microsoft.com,PROXY",
+      "input": {
+        "domain": "copilot.microsoft.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX copilot.microsoft.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,copilot.microsoft.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,copilot.microsoft.com,PROXY",
+      "input": {
+        "domain": "child.copilot.microsoft.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.copilot.microsoft.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,copilot.bing.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,copilot.bing.com,PROXY",
+      "input": {
+        "domain": "copilot.bing.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX copilot.bing.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,copilot.bing.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,copilot.bing.com,PROXY",
+      "input": {
+        "domain": "child.copilot.bing.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.copilot.bing.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,copilot.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,copilot.com,PROXY",
+      "input": {
+        "domain": "copilot.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX copilot.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,copilot.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,copilot.com,PROXY",
+      "input": {
+        "domain": "child.copilot.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.copilot.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,copilot.cloud.microsoft,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,copilot.cloud.microsoft,PROXY",
+      "input": {
+        "domain": "copilot.cloud.microsoft"
+      },
+      "name": "Unified DOMAIN-SUFFIX copilot.cloud.microsoft",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,copilot.cloud.microsoft,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,copilot.cloud.microsoft,PROXY",
+      "input": {
+        "domain": "child.copilot.cloud.microsoft"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.copilot.cloud.microsoft",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,githubusercontent.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,githubusercontent.com,PROXY",
+      "input": {
+        "domain": "githubusercontent.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX githubusercontent.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,githubusercontent.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,githubusercontent.com,PROXY",
+      "input": {
+        "domain": "child.githubusercontent.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.githubusercontent.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN,cloudflare-dns.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN,cloudflare-dns.com,PROXY",
+      "input": {
+        "domain": "cloudflare-dns.com"
+      },
+      "name": "Unified DOMAIN cloudflare-dns.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN,dns.google,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN,dns.google,PROXY",
+      "input": {
+        "domain": "dns.google"
+      },
+      "name": "Unified DOMAIN dns.google",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,ct.sendgrid.net,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,ct.sendgrid.net,PROXY",
+      "input": {
+        "domain": "ct.sendgrid.net"
+      },
+      "name": "Unified DOMAIN-SUFFIX ct.sendgrid.net",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,ct.sendgrid.net,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,ct.sendgrid.net,PROXY",
+      "input": {
+        "domain": "child.ct.sendgrid.net"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.ct.sendgrid.net",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,intercom.io,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,intercom.io,PROXY",
+      "input": {
+        "domain": "intercom.io"
+      },
+      "name": "Unified DOMAIN-SUFFIX intercom.io",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,intercom.io,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,intercom.io,PROXY",
+      "input": {
+        "domain": "child.intercom.io"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.intercom.io",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,intercomcdn.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,intercomcdn.com,PROXY",
+      "input": {
+        "domain": "intercomcdn.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX intercomcdn.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,intercomcdn.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,intercomcdn.com,PROXY",
+      "input": {
+        "domain": "child.intercomcdn.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.intercomcdn.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN,cdn.openaimerge.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN,cdn.openaimerge.com,PROXY",
+      "input": {
+        "domain": "cdn.openaimerge.com"
+      },
+      "name": "Unified DOMAIN cdn.openaimerge.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN,cdn.workos.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN,cdn.workos.com,PROXY",
+      "input": {
+        "domain": "cdn.workos.com"
+      },
+      "name": "Unified DOMAIN cdn.workos.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN,challenges.cloudflare.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN,challenges.cloudflare.com,PROXY",
+      "input": {
+        "domain": "challenges.cloudflare.com"
+      },
+      "name": "Unified DOMAIN challenges.cloudflare.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN,forwarder.workos.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN,forwarder.workos.com,PROXY",
+      "input": {
+        "domain": "forwarder.workos.com"
+      },
+      "name": "Unified DOMAIN forwarder.workos.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN,frontend-apps-multi-region.workos.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN,frontend-apps-multi-region.workos.com,PROXY",
+      "input": {
+        "domain": "frontend-apps-multi-region.workos.com"
+      },
+      "name": "Unified DOMAIN frontend-apps-multi-region.workos.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN,images.workoscdn.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN,images.workoscdn.com,PROXY",
+      "input": {
+        "domain": "images.workoscdn.com"
+      },
+      "name": "Unified DOMAIN images.workoscdn.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN,js.stripe.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN,js.stripe.com,PROXY",
+      "input": {
+        "domain": "js.stripe.com"
+      },
+      "name": "Unified DOMAIN js.stripe.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN,o207216.ingest.sentry.io,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN,o207216.ingest.sentry.io,PROXY",
+      "input": {
+        "domain": "o207216.ingest.sentry.io"
+      },
+      "name": "Unified DOMAIN o207216.ingest.sentry.io",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN,o33249.ingest.sentry.io,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN,o33249.ingest.sentry.io,PROXY",
+      "input": {
+        "domain": "o33249.ingest.sentry.io"
+      },
+      "name": "Unified DOMAIN o33249.ingest.sentry.io",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN,rum.browser-intake-datadoghq.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN,rum.browser-intake-datadoghq.com,PROXY",
+      "input": {
+        "domain": "rum.browser-intake-datadoghq.com"
+      },
+      "name": "Unified DOMAIN rum.browser-intake-datadoghq.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN,setup.workos.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN,setup.workos.com,PROXY",
+      "input": {
+        "domain": "setup.workos.com"
+      },
+      "name": "Unified DOMAIN setup.workos.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN,workos.imgix.net,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN,workos.imgix.net,PROXY",
+      "input": {
+        "domain": "workos.imgix.net"
+      },
+      "name": "Unified DOMAIN workos.imgix.net",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN,humb.apple.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN,humb.apple.com,PROXY",
+      "input": {
+        "domain": "humb.apple.com"
+      },
+      "name": "Unified DOMAIN humb.apple.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN,openai-api.arkoselabs.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN,openai-api.arkoselabs.com,PROXY",
+      "input": {
+        "domain": "openai-api.arkoselabs.com"
+      },
+      "name": "Unified DOMAIN openai-api.arkoselabs.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,client-api.arkoselabs.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,client-api.arkoselabs.com,PROXY",
+      "input": {
+        "domain": "client-api.arkoselabs.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX client-api.arkoselabs.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,client-api.arkoselabs.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,client-api.arkoselabs.com,PROXY",
+      "input": {
+        "domain": "child.client-api.arkoselabs.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.client-api.arkoselabs.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN,api.statsig.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN,api.statsig.com,PROXY",
+      "input": {
+        "domain": "api.statsig.com"
+      },
+      "name": "Unified DOMAIN api.statsig.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,events.statsigapi.net,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,events.statsigapi.net,PROXY",
+      "input": {
+        "domain": "events.statsigapi.net"
+      },
+      "name": "Unified DOMAIN-SUFFIX events.statsigapi.net",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,events.statsigapi.net,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,events.statsigapi.net,PROXY",
+      "input": {
+        "domain": "child.events.statsigapi.net"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.events.statsigapi.net",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,featuregates.org,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,featuregates.org,PROXY",
+      "input": {
+        "domain": "featuregates.org"
+      },
+      "name": "Unified DOMAIN-SUFFIX featuregates.org",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,featuregates.org,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,featuregates.org,PROXY",
+      "input": {
+        "domain": "child.featuregates.org"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.featuregates.org",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,byteoversea.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,byteoversea.com,PROXY",
+      "input": {
+        "domain": "byteoversea.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX byteoversea.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,byteoversea.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,byteoversea.com,PROXY",
+      "input": {
+        "domain": "child.byteoversea.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.byteoversea.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,ibytedtos.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,ibytedtos.com,PROXY",
+      "input": {
+        "domain": "ibytedtos.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX ibytedtos.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,ibytedtos.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,ibytedtos.com,PROXY",
+      "input": {
+        "domain": "child.ibytedtos.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.ibytedtos.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,ipstatp.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,ipstatp.com,PROXY",
+      "input": {
+        "domain": "ipstatp.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX ipstatp.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,ipstatp.com,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-SUFFIX,ipstatp.com,PROXY",
+      "input": {
+        "domain": "child.ipstatp.com"
+      },
+      "name": "Unified DOMAIN-SUFFIX child.ipstatp.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-KEYWORD,tiktokcdn,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "DOMAIN-KEYWORD,tiktokcdn,PROXY",
+      "input": {
+        "domain": "media.tiktokcdn.example"
+      },
+      "name": "Unified DOMAIN-KEYWORD media.tiktokcdn.example",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "DIRECT",
+        "rule": "DOMAIN-SUFFIX,erp.lingxing.com,DIRECT",
+        "source": "personal_direct"
+      },
+      "expected_category": "personal_direct",
+      "expected_rule": "DOMAIN-SUFFIX,erp.lingxing.com,DIRECT",
+      "input": {
+        "domain": "erp.lingxing.com",
+        "process": "Codex.exe"
+      },
+      "name": "Process/domain order Codex.exe erp.lingxing.com",
+      "policy": "DIRECT"
+    },
+    {
+      "actual": {
+        "policy": "DIRECT",
+        "rule": "PROCESS-NAME,ziniaobrowser.exe,DIRECT",
+        "source": "personal_direct"
+      },
+      "expected_category": "personal_direct",
+      "expected_rule": "PROCESS-NAME,ziniaobrowser.exe,DIRECT",
+      "input": {
+        "domain": "chatgpt.com",
+        "process": "ziniaobrowser.exe"
+      },
+      "name": "Process/domain order ziniaobrowser.exe chatgpt.com",
+      "policy": "DIRECT"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "PROCESS-NAME,Codex.exe,PROXY",
+        "source": "personal_proxy"
+      },
+      "expected_category": "personal_proxy",
+      "expected_rule": "PROCESS-NAME,Codex.exe,PROXY",
+      "input": {
+        "domain": "chatgpt.com",
+        "process": "Codex.exe"
+      },
+      "name": "Process/domain order Codex.exe chatgpt.com",
+      "policy": "PROXY"
     }
   ],
-  "rules": 14127,
-  "schema_version": 1,
+  "rules": 14136,
+  "schema_version": 2,
+  "shared_version": "13d6d3ab9a49c6f06c843f0e50cd17a617f15a6a2dbb631edfb8ee6c81d6b969",
   "source_files_sha256": {
     "config/bootstrap.json": "5f834887b0a8ceccef89682902d0197255f3f037619182770f7ddde51e313574",
-    "config/override.js": "f83b03d9655a3c93809f017f39b0b7caa8d7cf0d54ec856366c247ede695104e",
-    "config/sources.yaml": "51e426e1e21f61b9ab1aa7b02eeb2191240aa2e748b1f970476b07a2c210401f",
-    "docs/install.md": "bb0ebf1be41b74400a841b644f33a85df9745a7bcaaea940e712acfea33e3db9",
+    "config/override.js": "5d6544a9e28c50a434bf8186b4a5fe843879cbbd2c8137bb3d0dae35abdf2891",
+    "config/shared.json": "90382edeb83bb4967fb77e5c07ca0182f7899210c7e9f090587fddbdd41d8624",
+    "docs/install.md": "c639833357a940605cdd26485bbe6db802dc9bf6d591ba29a504f95991a6c45c",
     "docs/third_party.md": "f2ba21f7806cf0ce507cbce984668abf2964ff2c52eccfa796d49560e2bcddf0",
-    "rules/custom.list": "db81aadd8eb92fc18151764d92da4d6a7dd4a17f8f21c09a49b8b79199d8d912",
-    "scripts/build.py": "dfee84b955f116e92d2c0f23b1a9f4d2d3a5cf649c2efc29191c88d981b07007",
-    "tests/routing_cases.json": "32a9591053d21db93ffc49f91f45d32d9001829f161582232b8c7cfb5285a072",
-    "tests/source_baseline.json": "7adc33ab09dea717d003d9f185e0956e28316eea6d95287839b762ad80c312b1"
+    "scripts/build.py": "ae82f79f27a62748d5c696b0dfe265a37f865ec8fba12bf75bc542c7695ba7dc",
+    "scripts/check_core.py": "751463df1208fbc6ca999af8cc88d29df8f9e0f154acd85654c059c95e49ea01",
+    "scripts/fetch_test_core.py": "0ee1f93f90c154ce2b91b5245f71aa9ab95f1bd7e1a631287c7f591828444976",
+    "scripts/keepalive.py": "56a4e12ebba72d8e2b49d2222cdf697040c4d7bdcd9132f21357f067ddc5cf8a",
+    "scripts/publish.py": "4fb6f61a3963a3aa5e757226cd359b0a33f81dee092efb50b172e3a8fbc2e2ab",
+    "scripts/render_client.py": "9cae615bd58b2ec4e90fb451f6a8a4cfa4901dd9eb635b1c32136e087226c13c",
+    "scripts/shared_data.py": "3aa79718d4e135e46b8adfd53e03d9cfefc879e7aa73bf81e7ed4b413b720fbe",
+    "tests/test_adapter.js": "ce6d4d32e0562805170d03ee2ee32267565e189902db9e8d5e101191e8db54bd",
+    "tests/test_consumer.py": "7b5824b4a59dfae5ee51e2f909153e55c80a1207efce2e7a6a939c132003eacc",
+    "tests/test_keepalive.py": "4c9762a4d21499309161dd30ebc1ed3dbac43535333cdd03ed5111a265fbb3e4",
+    "tests/test_publish.py": "18f8c7a0c98282f2d638177a67396e2999adbdabf463ade89c5ca8267fd3a4b6"
   },
-  "validation": "static build and adapter tests; user live access acceptance is separate",
+  "validation": "Static generation verified; client parsing and real network acceptance are separate.",
   "voice_ip_cases": 23
 }

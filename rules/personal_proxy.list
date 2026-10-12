@@ -1,12 +1,19 @@
-# personal_proxy -- generated; do not edit
+# personal_proxy | 个人代理
 PROCESS-NAME,Twitch Drops Miner (by DevilXD).exe
 PROCESS-NAME,Codex.exe
+DOMAIN-SUFFIX,apple-relay.akamaized.net
+DOMAIN-SUFFIX,apple-relay.apple.com
+DOMAIN-SUFFIX,apple-relay.cloudflare.com
+DOMAIN-SUFFIX,apple-relay.fastly-edge.com
+DOMAIN-SUFFIX,apple-relay.mask.apple-dns.net
+DOMAIN,cp4.cloudflare.com
+DOMAIN-SUFFIX,copilot.microsoft.com
+DOMAIN-SUFFIX,copilot.bing.com
+DOMAIN-SUFFIX,copilot.com
+DOMAIN-SUFFIX,copilot.cloud.microsoft
 DOMAIN-SUFFIX,githubusercontent.com
 DOMAIN,cloudflare-dns.com
 DOMAIN,dns.google
-DOMAIN-SUFFIX,ipstatp.com
-DOMAIN-SUFFIX,copilot.com
-DOMAIN-SUFFIX,copilot.cloud.microsoft
 DOMAIN-SUFFIX,ct.sendgrid.net
 DOMAIN-SUFFIX,intercom.io
 DOMAIN-SUFFIX,intercomcdn.com
@@ -15,7 +22,6 @@ DOMAIN,cdn.workos.com
 DOMAIN,challenges.cloudflare.com
 DOMAIN,forwarder.workos.com
 DOMAIN,frontend-apps-multi-region.workos.com
-DOMAIN,humb.apple.com
 DOMAIN,images.workoscdn.com
 DOMAIN,js.stripe.com
 DOMAIN,o207216.ingest.sentry.io
@@ -23,8 +29,13 @@ DOMAIN,o33249.ingest.sentry.io
 DOMAIN,rum.browser-intake-datadoghq.com
 DOMAIN,setup.workos.com
 DOMAIN,workos.imgix.net
+DOMAIN,humb.apple.com
 DOMAIN,openai-api.arkoselabs.com
-DOMAIN,client-api.arkoselabs.com
+DOMAIN-SUFFIX,client-api.arkoselabs.com
 DOMAIN,api.statsig.com
-DOMAIN,events.statsigapi.net
+DOMAIN-SUFFIX,events.statsigapi.net
 DOMAIN-SUFFIX,featuregates.org
+DOMAIN-SUFFIX,byteoversea.com
+DOMAIN-SUFFIX,ibytedtos.com
+DOMAIN-SUFFIX,ipstatp.com
+DOMAIN-KEYWORD,tiktokcdn
