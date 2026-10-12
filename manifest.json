@@ -1871,7 +1871,7 @@
     "docs/install.md": "03475e3fd6d3a8a81c143267c3f6c45a2be73ff79072672bfb47894dde29c07f",
     "docs/third_party.md": "f2ba21f7806cf0ce507cbce984668abf2964ff2c52eccfa796d49560e2bcddf0",
     "rules/custom.list": "db81aadd8eb92fc18151764d92da4d6a7dd4a17f8f21c09a49b8b79199d8d912",
-    "scripts/build.py": "d63853887dd26a5f38ae2190d0bcec359ed637db9f3445f3494f649c2d03d73c",
+    "scripts/build.py": "dfee84b955f116e92d2c0f23b1a9f4d2d3a5cf649c2efc29191c88d981b07007",
     "tests/routing_cases.json": "32a9591053d21db93ffc49f91f45d32d9001829f161582232b8c7cfb5285a072",
     "tests/source_baseline.json": "7adc33ab09dea717d003d9f185e0956e28316eea6d95287839b762ad80c312b1"
   },
