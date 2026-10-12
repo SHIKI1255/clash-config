@@ -288,7 +288,7 @@
     "google": 700,
     "microsoft": 668,
     "openai": 20,
-    "personal_direct": 23,
+    "personal_direct": 24,
     "personal_proxy": 40,
     "proxy": 6769,
     "steam": 54,
@@ -2968,6 +2968,21 @@
     },
     {
       "actual": {
+        "policy": "DIRECT",
+        "rule": "PROCESS-NAME,ssr-stove-shield.exe,DIRECT",
+        "source": "personal_direct"
+      },
+      "expected_category": "personal_direct",
+      "expected_rule": "PROCESS-NAME,ssr-stove-shield.exe,DIRECT",
+      "input": {
+        "domain": "chatgpt.com",
+        "process": "ssr-stove-shield.exe"
+      },
+      "name": "CZN game process precedes service proxy",
+      "policy": "DIRECT"
+    },
+    {
+      "actual": {
         "policy": "PROXY",
         "rule": "PROCESS-NAME,Codex.exe,PROXY",
         "source": "personal_proxy"
@@ -2982,9 +2997,9 @@
       "policy": "PROXY"
     }
   ],
-  "rules": 14136,
+  "rules": 14137,
   "schema_version": 2,
-  "shared_version": "13d6d3ab9a49c6f06c843f0e50cd17a617f15a6a2dbb631edfb8ee6c81d6b969",
+  "shared_version": "e9b07d7aeb539cb09c2829a5acaff9cf69f2e599e0b25d74b3d64ed9fcab7bc5",
   "source_files_sha256": {
     "config/bootstrap.json": "5f834887b0a8ceccef89682902d0197255f3f037619182770f7ddde51e313574",
     "config/override.js": "5d6544a9e28c50a434bf8186b4a5fe843879cbbd2c8137bb3d0dae35abdf2891",

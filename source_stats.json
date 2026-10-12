@@ -11,7 +11,7 @@
     "google": 700,
     "microsoft": 668,
     "openai": 20,
-    "personal_direct": 23,
+    "personal_direct": 24,
     "personal_proxy": 40,
     "proxy": 6769,
     "steam": 54,
@@ -21,6 +21,6 @@
     "twitter": 33,
     "voice": 23
   },
-  "rules": 14136,
-  "shared_version": "13d6d3ab9a49c6f06c843f0e50cd17a617f15a6a2dbb631edfb8ee6c81d6b969"
+  "rules": 14137,
+  "shared_version": "e9b07d7aeb539cb09c2829a5acaff9cf69f2e599e0b25d74b3d64ed9fcab7bc5"
 }
