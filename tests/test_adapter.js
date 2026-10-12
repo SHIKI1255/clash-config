@@ -61,6 +61,28 @@ for (const name of ['GeekSpeed极客加速器', '雪橇云']) {
     const a = fixture(name); a.proxies[0].server = '192.0.2.99';
     assert.equal(apply(a, name).config.proxies[0].server, '192.0.2.99');
   });
+  test(name + ' main checks change only the four approved fields', () => {
+    const input = fixture(name);
+    const main = input['proxy-groups'][0];
+    main.proxies.push('Backup');
+    if (name === '雪橇云') {
+      Object.assign(main, {url: 'http://www.gstatic.com/generate_204', interval: 600, lazy: true});
+      main.proxies.push('DIRECT');
+    }
+    main['default-selected'] = 'Fixture A';
+    input['proxy-groups'].push({name: 'Backup', type: 'fallback', proxies: ['Fixture A']});
+    const result = apply(input, name);
+    assert.equal(result.failed, false);
+    assert.deepEqual(result.config['proxy-groups'][0], {...main,
+      url: 'https://www.gstatic.com/generate_204', 'expected-status': 204, timeout: 5000, interval: 0});
+    for (const g of result.config['proxy-groups'].slice(1)) {
+      assert.equal(g.interval, 300); assert.equal(g.timeout, 5000);
+      assert.equal(g.url, 'https://www.gstatic.com/generate_204');
+      assert.equal(g['expected-status'], 204); assert.equal(g.lazy, true);
+      if (g.type === 'url-test') assert.equal(g.tolerance, 100);
+    }
+    assert.deepEqual(apply(result.config, name).config, result.config);
+  });
 }
 test('unknown main fails under guard', () => {
   const r = apply(fixture('Provider'), 'Missing'); assert.equal(r.failed, true);
@@ -104,5 +126,18 @@ test('DNS policy order follows business rule sources', () => {
   const a = Object.keys(c.dns['nameserver-policy']);
   assert.ok(a.indexOf('rule-set:personal_clash_copilot') < a.indexOf('rule-set:personal_clash_microsoft'));
   assert.ok(a.indexOf('rule-set:personal_clash_steam_cn') < a.indexOf('rule-set:personal_clash_steam'));
+});
+test('voice stays in routing while only its DNS selector disappears', () => {
+  const c = apply(fixture('Provider'), 'Provider').config;
+  assert.deepEqual(Object.keys(c['rule-providers']), descriptors.map(s => 'personal_clash_' + s.id));
+  assert.deepEqual(c.rules.slice(guard.rules.length - 1, -2), descriptors.map(s =>
+    'RULE-SET,personal_clash_' + s.id + ',' + (s.policy === 'DIRECT' ? 'DIRECT' : 'Provider')));
+  const keys = Object.keys(c.dns['nameserver-policy']);
+  assert.deepEqual(keys.filter(k => k.startsWith('rule-set:')),
+    descriptors.filter(s => s.id !== 'voice').map(s => 'rule-set:personal_clash_' + s.id));
+  const voice = c['rule-providers'].personal_clash_voice;
+  assert.equal(voice.url, 'https://raw.githubusercontent.com/SHIKI1255/clash-config/release/rules/voice.list');
+  assert.equal(voice.path, './ruleset/personal-clash/voice.list');
+  assert.equal(voice.interval, 86400); assert.equal(voice.proxy, 'Provider');
 });
 console.log(JSON.stringify({adapter_tests: count, status: 'passed'}));
