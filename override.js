@@ -36,7 +36,10 @@ function main(config, profileName) {
   nodes.forEach(p => { if (p['dialer-proxy']) visit(p['dialer-proxy'], []); });
   Object.values(config['proxy-providers'] || {}).forEach(p => { if (p.proxy) visit(p.proxy, []); });
   const kept = groups.filter(g => retained.has(g.name));
-  // Same metadata exclusion and health-check behavior as the previous local overlay.
+  // The main selector keeps its members and choice; automatic groups own periodic checks.
+  target.url = 'https://www.gstatic.com/generate_204';
+  target['expected-status'] = 204; target.timeout = 5000; target.interval = 0;
+  // Preserve metadata exclusion and periodic checks for automatic groups.
   const metadata = new Set(nodes.filter(p =>
     /^(剩余流量|距离下次重置|套餐到期|到期时间|长效[：:]|国内[：:])/.test(p.name) &&
     /^(127\.|0\.0\.0\.0$|localhost$|192\.0\.2\.|198\.51\.100\.|203\.0\.113\.)/i.test(String(p.server))
@@ -66,7 +69,8 @@ function main(config, profileName) {
       path: './ruleset/personal-clash/' + s.id + '.list', interval: 86400, proxy: mainName};
     // Domain matching only: process/IP entries do not become DNS selectors.
     // Ordered rule-set policies preserve SteamCN/Steam and Copilot/Microsoft precedence.
-    policy['rule-set:' + id] = s.policy === 'DIRECT' ? domestic : overseas;
+    // Official voice ranges contain only IP rules; keep their routing provider, not a DNS selector.
+    if (s.id !== 'voice') policy['rule-set:' + id] = s.policy === 'DIRECT' ? domestic : overseas;
   });
   policy['geosite:cn'] = domestic;
   function nodeResolvers(value) {
