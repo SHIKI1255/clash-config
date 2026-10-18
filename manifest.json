@@ -287,10 +287,10 @@
     "github": 30,
     "google": 700,
     "microsoft": 668,
-    "openai": 20,
+    "openai": 21,
     "personal_direct": 24,
     "personal_proxy": 40,
-    "proxy": 6769,
+    "proxy": 6772,
     "steam": 54,
     "steam_cn": 17,
     "telegram": 46,
@@ -298,7 +298,7 @@
     "twitter": 33,
     "voice": 23
   },
-  "removed_exact_duplicates": 12346,
+  "removed_exact_duplicates": 12349,
   "routing_cases": [
     {
       "actual": {
@@ -2997,9 +2997,9 @@
       "policy": "PROXY"
     }
   ],
-  "rules": 14137,
+  "rules": 14141,
   "schema_version": 2,
-  "shared_version": "211eac73d36768bc5a93546a2c4577e2f858f030032475589ba5d42f20a348f1",
+  "shared_version": "8436a2938c1960ab774e59ee993be7a730a92408f1bfb9b9f300c7b074baca99",
   "source_files_sha256": {
     "config/bootstrap.json": "5f834887b0a8ceccef89682902d0197255f3f037619182770f7ddde51e313574",
     "config/override.js": "5d6544a9e28c50a434bf8186b4a5fe843879cbbd2c8137bb3d0dae35abdf2891",
