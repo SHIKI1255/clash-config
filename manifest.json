@@ -280,7 +280,7 @@
     "apple": 1593,
     "bilibili": 129,
     "china": 3657,
-    "claude": 9,
+    "claude": 19,
     "copilot": 16,
     "crypto": 204,
     "gemini": 46,
@@ -300,6 +300,286 @@
   },
   "removed_exact_duplicates": 12349,
   "routing_cases": [
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,ant.dev,PROXY",
+        "source": "claude"
+      },
+      "expected_category": "claude",
+      "expected_rule": "DOMAIN-SUFFIX,ant.dev,PROXY",
+      "input": {
+        "domain": "ant.dev"
+      },
+      "name": "Reviewed Claude 2026-10-22 ant.dev",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,ant.dev,PROXY",
+        "source": "claude"
+      },
+      "expected_category": "claude",
+      "expected_rule": "DOMAIN-SUFFIX,ant.dev,PROXY",
+      "input": {
+        "domain": "probe.ant.dev"
+      },
+      "name": "Reviewed Claude 2026-10-22 probe.ant.dev",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,anthropic.team,PROXY",
+        "source": "claude"
+      },
+      "expected_category": "claude",
+      "expected_rule": "DOMAIN-SUFFIX,anthropic.team,PROXY",
+      "input": {
+        "domain": "anthropic.team"
+      },
+      "name": "Reviewed Claude 2026-10-22 anthropic.team",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,anthropic.team,PROXY",
+        "source": "claude"
+      },
+      "expected_category": "claude",
+      "expected_rule": "DOMAIN-SUFFIX,anthropic.team,PROXY",
+      "input": {
+        "domain": "probe.anthropic.team"
+      },
+      "name": "Reviewed Claude 2026-10-22 probe.anthropic.team",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,antspace.dev,PROXY",
+        "source": "claude"
+      },
+      "expected_category": "claude",
+      "expected_rule": "DOMAIN-SUFFIX,antspace.dev,PROXY",
+      "input": {
+        "domain": "antspace.dev"
+      },
+      "name": "Reviewed Claude 2026-10-22 antspace.dev",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,antspace.dev,PROXY",
+        "source": "claude"
+      },
+      "expected_category": "claude",
+      "expected_rule": "DOMAIN-SUFFIX,antspace.dev,PROXY",
+      "input": {
+        "domain": "probe.antspace.dev"
+      },
+      "name": "Reviewed Claude 2026-10-22 probe.antspace.dev",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,chatbotclaude.com,PROXY",
+        "source": "claude"
+      },
+      "expected_category": "claude",
+      "expected_rule": "DOMAIN-SUFFIX,chatbotclaude.com,PROXY",
+      "input": {
+        "domain": "chatbotclaude.com"
+      },
+      "name": "Reviewed Claude 2026-10-22 chatbotclaude.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,chatbotclaude.com,PROXY",
+        "source": "claude"
+      },
+      "expected_category": "claude",
+      "expected_rule": "DOMAIN-SUFFIX,chatbotclaude.com,PROXY",
+      "input": {
+        "domain": "probe.chatbotclaude.com"
+      },
+      "name": "Reviewed Claude 2026-10-22 probe.chatbotclaude.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,claude.app,PROXY",
+        "source": "claude"
+      },
+      "expected_category": "claude",
+      "expected_rule": "DOMAIN-SUFFIX,claude.app,PROXY",
+      "input": {
+        "domain": "claude.app"
+      },
+      "name": "Reviewed Claude 2026-10-22 claude.app",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,claude.app,PROXY",
+        "source": "claude"
+      },
+      "expected_category": "claude",
+      "expected_rule": "DOMAIN-SUFFIX,claude.app,PROXY",
+      "input": {
+        "domain": "probe.claude.app"
+      },
+      "name": "Reviewed Claude 2026-10-22 probe.claude.app",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,claude.new,PROXY",
+        "source": "claude"
+      },
+      "expected_category": "claude",
+      "expected_rule": "DOMAIN-SUFFIX,claude.new,PROXY",
+      "input": {
+        "domain": "claude.new"
+      },
+      "name": "Reviewed Claude 2026-10-22 claude.new",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,claude.new,PROXY",
+        "source": "claude"
+      },
+      "expected_category": "claude",
+      "expected_rule": "DOMAIN-SUFFIX,claude.new,PROXY",
+      "input": {
+        "domain": "probe.claude.new"
+      },
+      "name": "Reviewed Claude 2026-10-22 probe.claude.new",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,claude.site,PROXY",
+        "source": "claude"
+      },
+      "expected_category": "claude",
+      "expected_rule": "DOMAIN-SUFFIX,claude.site,PROXY",
+      "input": {
+        "domain": "claude.site"
+      },
+      "name": "Reviewed Claude 2026-10-22 claude.site",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,claude.site,PROXY",
+        "source": "claude"
+      },
+      "expected_category": "claude",
+      "expected_rule": "DOMAIN-SUFFIX,claude.site,PROXY",
+      "input": {
+        "domain": "probe.claude.site"
+      },
+      "name": "Reviewed Claude 2026-10-22 probe.claude.site",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,claudeacademy.com,PROXY",
+        "source": "claude"
+      },
+      "expected_category": "claude",
+      "expected_rule": "DOMAIN-SUFFIX,claudeacademy.com,PROXY",
+      "input": {
+        "domain": "claudeacademy.com"
+      },
+      "name": "Reviewed Claude 2026-10-22 claudeacademy.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,claudeacademy.com,PROXY",
+        "source": "claude"
+      },
+      "expected_category": "claude",
+      "expected_rule": "DOMAIN-SUFFIX,claudeacademy.com,PROXY",
+      "input": {
+        "domain": "probe.claudeacademy.com"
+      },
+      "name": "Reviewed Claude 2026-10-22 probe.claudeacademy.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,claudepages.dev,PROXY",
+        "source": "claude"
+      },
+      "expected_category": "claude",
+      "expected_rule": "DOMAIN-SUFFIX,claudepages.dev,PROXY",
+      "input": {
+        "domain": "claudepages.dev"
+      },
+      "name": "Reviewed Claude 2026-10-22 claudepages.dev",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,claudepages.dev,PROXY",
+        "source": "claude"
+      },
+      "expected_category": "claude",
+      "expected_rule": "DOMAIN-SUFFIX,claudepages.dev,PROXY",
+      "input": {
+        "domain": "probe.claudepages.dev"
+      },
+      "name": "Reviewed Claude 2026-10-22 probe.claudepages.dev",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,claudestudio.com,PROXY",
+        "source": "claude"
+      },
+      "expected_category": "claude",
+      "expected_rule": "DOMAIN-SUFFIX,claudestudio.com,PROXY",
+      "input": {
+        "domain": "claudestudio.com"
+      },
+      "name": "Reviewed Claude 2026-10-22 claudestudio.com",
+      "policy": "PROXY"
+    },
+    {
+      "actual": {
+        "policy": "PROXY",
+        "rule": "DOMAIN-SUFFIX,claudestudio.com,PROXY",
+        "source": "claude"
+      },
+      "expected_category": "claude",
+      "expected_rule": "DOMAIN-SUFFIX,claudestudio.com,PROXY",
+      "input": {
+        "domain": "probe.claudestudio.com"
+      },
+      "name": "Reviewed Claude 2026-10-22 probe.claudestudio.com",
+      "policy": "PROXY"
+    },
     {
       "actual": {
         "policy": "PROXY",
@@ -2997,9 +3277,9 @@
       "policy": "PROXY"
     }
   ],
-  "rules": 14141,
+  "rules": 14151,
   "schema_version": 2,
-  "shared_version": "67feb8cb5c9851b3f375cd8da2cf5e80219c5e765d36b5d704f1cc9b576a9acb",
+  "shared_version": "558cee1a2d4e7559cbf112d8b085afbaf097320e41af3860d25fe4c647a5144a",
   "source_files_sha256": {
     "config/bootstrap.json": "5f834887b0a8ceccef89682902d0197255f3f037619182770f7ddde51e313574",
     "config/override.js": "5d6544a9e28c50a434bf8186b4a5fe843879cbbd2c8137bb3d0dae35abdf2891",

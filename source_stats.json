@@ -3,7 +3,7 @@
     "apple": 1593,
     "bilibili": 129,
     "china": 3657,
-    "claude": 9,
+    "claude": 19,
     "copilot": 16,
     "crypto": 204,
     "gemini": 46,
@@ -21,6 +21,6 @@
     "twitter": 33,
     "voice": 23
   },
-  "rules": 14141,
-  "shared_version": "67feb8cb5c9851b3f375cd8da2cf5e80219c5e765d36b5d704f1cc9b576a9acb"
+  "rules": 14151,
+  "shared_version": "558cee1a2d4e7559cbf112d8b085afbaf097320e41af3860d25fe4c647a5144a"
 }
