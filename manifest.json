@@ -291,7 +291,7 @@
     "personal_direct": 24,
     "personal_proxy": 40,
     "proxy": 6772,
-    "steam": 54,
+    "steam": 69,
     "steam_cn": 17,
     "telegram": 46,
     "tiktok": 35,
@@ -3277,9 +3277,9 @@
       "policy": "PROXY"
     }
   ],
-  "rules": 14151,
+  "rules": 14166,
   "schema_version": 2,
-  "shared_version": "558cee1a2d4e7559cbf112d8b085afbaf097320e41af3860d25fe4c647a5144a",
+  "shared_version": "bc13b2d3189254197d2d1411f7374976237e9de203c559bdb2c74fe136dbcb07",
   "source_files_sha256": {
     "config/bootstrap.json": "5f834887b0a8ceccef89682902d0197255f3f037619182770f7ddde51e313574",
     "config/override.js": "5d6544a9e28c50a434bf8186b4a5fe843879cbbd2c8137bb3d0dae35abdf2891",

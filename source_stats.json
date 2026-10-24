@@ -14,13 +14,13 @@
     "personal_direct": 24,
     "personal_proxy": 40,
     "proxy": 6772,
-    "steam": 54,
+    "steam": 69,
     "steam_cn": 17,
     "telegram": 46,
     "tiktok": 35,
     "twitter": 33,
     "voice": 23
   },
-  "rules": 14151,
-  "shared_version": "558cee1a2d4e7559cbf112d8b085afbaf097320e41af3860d25fe4c647a5144a"
+  "rules": 14166,
+  "shared_version": "bc13b2d3189254197d2d1411f7374976237e9de203c559bdb2c74fe136dbcb07"
 }
