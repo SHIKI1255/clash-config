@@ -277,7 +277,7 @@
   ],
   "guard_sha256": "5f834887b0a8ceccef89682902d0197255f3f037619182770f7ddde51e313574",
   "providers": {
-    "apple": 1593,
+    "apple": 1592,
     "bilibili": 129,
     "china": 3657,
     "claude": 19,
@@ -290,15 +290,15 @@
     "openai": 21,
     "personal_direct": 24,
     "personal_proxy": 40,
-    "proxy": 6772,
+    "proxy": 6792,
     "steam": 69,
     "steam_cn": 17,
     "telegram": 46,
     "tiktok": 35,
     "twitter": 33,
-    "voice": 23
+    "voice": 150
   },
-  "removed_exact_duplicates": 12349,
+  "removed_exact_duplicates": 12368,
   "routing_cases": [
     {
       "actual": {
@@ -3277,9 +3277,9 @@
       "policy": "PROXY"
     }
   ],
-  "rules": 14166,
+  "rules": 14312,
   "schema_version": 2,
-  "shared_version": "8e65822205600da5e8f4a3937d8163c6e6321f61bc6fe6c0037d7cc7a9117f2d",
+  "shared_version": "3660ca4704bdd8105f77d72b3be15bff6bdbede830f19e67051861e462eaae52",
   "source_files_sha256": {
     "config/bootstrap.json": "5f834887b0a8ceccef89682902d0197255f3f037619182770f7ddde51e313574",
     "config/override.js": "5d6544a9e28c50a434bf8186b4a5fe843879cbbd2c8137bb3d0dae35abdf2891",
@@ -3299,5 +3299,5 @@
     "tests/test_publish.py": "18f8c7a0c98282f2d638177a67396e2999adbdabf463ade89c5ca8267fd3a4b6"
   },
   "validation": "Static generation verified; client parsing and real network acceptance are separate.",
-  "voice_ip_cases": 23
+  "voice_ip_cases": 150
 }
