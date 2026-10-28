@@ -9,13 +9,13 @@ import json
 from pathlib import Path
 import urllib.request
 from build import fetch, require
+from public_http import request_bytes
 
 CORE_URL = 'https://github.com/MetaCubeX/mihomo/releases/download/v1.19.32/mihomo-linux-amd64-v1.19.32.gz'
 CORE_SHA = '8451100836c9eda194331c2babfad490b2faf30cebc1a04b0e76fd8ac2d35d10'
 
 def download(url, expected):
-    with urllib.request.urlopen(url, timeout=60) as response:
-        data=response.read(64*1024*1024+1)
+    data = request_bytes(urllib.request.Request(url), limit=64*1024*1024, timeout=60)
     require(len(data)<=64*1024*1024, 'Native CI download too large')
     require(hashlib.sha256(data).hexdigest()==expected, 'Native CI download hash mismatch')
     return data
