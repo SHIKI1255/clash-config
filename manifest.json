@@ -294,7 +294,7 @@
     "steam": 69,
     "steam_cn": 17,
     "telegram": 46,
-    "tiktok": 35,
+    "tiktok": 38,
     "twitter": 33,
     "voice": 402
   },
@@ -3277,9 +3277,9 @@
       "policy": "PROXY"
     }
   ],
-  "rules": 14567,
+  "rules": 14570,
   "schema_version": 2,
-  "shared_version": "f735aec101778175140859e9f5cfef6246f0845afbbd24366577565ba0f2d7c2",
+  "shared_version": "1c9c4e1d36e5e3b29467e35c67bba53368bbe97861a075302cdb56fcb78d1eb1",
   "source_files_sha256": {
     "config/bootstrap.json": "5f834887b0a8ceccef89682902d0197255f3f037619182770f7ddde51e313574",
     "config/override.js": "5d6544a9e28c50a434bf8186b4a5fe843879cbbd2c8137bb3d0dae35abdf2891",
