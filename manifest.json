@@ -296,7 +296,7 @@
     "telegram": 46,
     "tiktok": 38,
     "twitter": 33,
-    "voice": 540
+    "voice": 411
   },
   "removed_exact_duplicates": 12368,
   "routing_cases": [
@@ -3277,9 +3277,9 @@
       "policy": "PROXY"
     }
   ],
-  "rules": 14708,
+  "rules": 14579,
   "schema_version": 2,
-  "shared_version": "ab8188249889955997b41a78e5a51aa2f1ad60e72fac46dab75743b17950441a",
+  "shared_version": "8f6639916297248348dac0037b9bb46dec304475a661722f009053ad02be0e0d",
   "source_files_sha256": {
     "config/bootstrap.json": "5f834887b0a8ceccef89682902d0197255f3f037619182770f7ddde51e313574",
     "config/override.js": "5d6544a9e28c50a434bf8186b4a5fe843879cbbd2c8137bb3d0dae35abdf2891",
@@ -3301,8 +3301,8 @@
     "tests/test_keepalive.py": "c167a740407dae9c924e5ce76828595077272589c5f8d985d6da45637b44ecd6",
     "tests/test_publish.py": "18f8c7a0c98282f2d638177a67396e2999adbdabf463ade89c5ca8267fd3a4b6",
     "tests/test_release_resilience.py": "b40afe8d97db91f6d12ba0bd107c6e5f444a3165573acd7d1c72ec7c175fd4fe",
-    "tests/test_version_probe.py": "cb20d63df84c56cd9ce7036959b27702df9b03cbda4fd95c17e71977a4461ba7"
+    "tests/test_version_probe.py": "e9eb697a0a710a0b4d514f75e4c8321cd74fbf4e301e735532643de72a9f801f"
   },
   "validation": "Static generation verified; client parsing and real network acceptance are separate.",
-  "voice_ip_cases": 540
+  "voice_ip_cases": 411
 }
