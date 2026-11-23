@@ -1,12 +1,11 @@
-"""Build a local template from validated shared routing data (Python 3.12)."""
+"""Build a local template from validated shared routing data (Python 3.12+)."""
 from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
-import re
 import sys
 from shared_data import (API, RAW, BuildError, require, digest, json_bytes, records, fetch,
-    checksum_files, deterministic_zip, release_sha, load, verify, write_files as save_files)
+    checksum_files, release_sha, load, verify, write_files as save_files)
 from render_client import render
 from render_client import bundle_clash
 ROOT = Path(__file__).resolve().parents[1]

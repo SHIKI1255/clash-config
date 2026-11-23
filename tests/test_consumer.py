@@ -94,3 +94,29 @@ class ClashAdapter(unittest.TestCase):
     def test_adapter_and_guards(self):
         result=subprocess.run(['node',str(b.ROOT/'tests/test_adapter.js')],capture_output=True,text=True)
         self.assertEqual(result.returncode,0,result.stdout+result.stderr)
+
+    def test_fetch_core_platform_selection(self):
+        import fetch_test_core as ftc
+        def fake_release(tag='v1.19.34', *, draft=False, prerelease=False, digest_prefix='sha256:'):
+            return {'tag_name': tag, 'draft': draft, 'prerelease': prerelease, 'assets': [
+                {'name': f'mihomo-{slug}-{tag}.gz',
+                 'browser_download_url': f'https://github.com/MetaCubeX/mihomo/releases/download/{tag}/mihomo-{slug}-{tag}.gz',
+                 'digest': digest_prefix + ('a' * 64)}
+                for slug in ('linux-amd64', 'darwin-arm64')]}
+        for os_name, arch, slug in (('linux', 'x86_64', 'linux-amd64'), ('darwin', 'arm64', 'darwin-arm64')):
+            ver, url, sha = ftc.select_core_asset(fake_release('v1.19.34'), os_name, arch)
+            self.assertEqual(ver, '1.19.34')
+            self.assertTrue(url.endswith(f'/mihomo-{slug}-v1.19.34.gz'))
+            self.assertEqual(sha, 'a' * 64)
+        self.assertEqual(ftc.select_core_asset(fake_release('v1.19.33'), 'darwin', 'arm64')[0], '1.19.33')
+        for bad in (
+            fake_release('v1.19.32'),
+            fake_release('v1.19.35-alpha'),
+            fake_release('v1.19.34', prerelease=True),
+            fake_release('v1.19.34', draft=True),
+            fake_release('v1.19.34', digest_prefix=''),
+        ):
+            with self.assertRaises(d.BuildError):
+                ftc.select_core_asset(bad, 'darwin', 'arm64')
+        with self.assertRaises(d.BuildError):
+            ftc.select_core_asset(fake_release('v1.19.34'), 'win32', 'x86_64')

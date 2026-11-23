@@ -1,12 +1,13 @@
 # Clash configuration
 
-Use PowerShell 7. Python 3.12 standard library for the builder; Node.js for pure
-adapter tests. Source and reusable tests belong here. Generated artifacts and
-private local validation inputs belong outside this checkout.
+Use zsh on macOS (or POSIX shell). Python 3.14 standard library (Python 3.12+
+compatible) for the builder; Node.js Active LTS for pure adapter tests. Source and
+reusable tests belong here. Generated artifacts and private local validation inputs
+belong outside this checkout.
 
-Use D:/CodexProjects/repo-naming-governance/govern.ps1 -Action Context -RepoRoot
-<this repo> -Task Read|Change|File|Git on the governed Windows host. Do not copy
-unrelated in-progress environment components or modify another proxy repository.
+On governed macOS hosts, use `/Users/gabriel/Projects/repo-naming-governance/govern.py`
+and `artifact.py`. Do not copy unrelated in-progress environment components or
+modify another proxy repository.
 
 Never commit provider nodes, subscription credentials, complete private profiles,
 certificates or traffic logs. Keep node parameters and provider Hosts intact.
@@ -17,9 +18,9 @@ source drift, unregistered conflicts or failed routing checks stop publication.
 Do not automatically widen a baseline to make a build pass. Audit candidates must
 not be publishable. Test the native guard independently of JavaScript execution.
 
-Run python -B -m unittest discover -s tests -v, Node adapter tests, a network build
-and an offline replay. Stage explicit files only. Commit/push/merge/publish require
-authorization; the implementation request covers this new repository and its PR.
+Run `python3.14 -B -m unittest discover -s tests -v`, Node adapter tests, a network
+build and an offline replay. Stage explicit files only. Commit/push/merge/publish
+require authorization.
 
 Public rule/source/conversion authority: SHIKI1255/shadowrocket-config/shared.
 Consumers read versioned JSON data only; never execute downloaded source code.

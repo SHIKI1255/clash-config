@@ -31,6 +31,14 @@ class Publication(unittest.TestCase):
             self.fixture(path); (path/'private.yaml').write_text('do not publish')
             with self.assertRaises(b.BuildError): p.verified_files(path)
 
+    def test_inner_symlink_artifact_is_rejected(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp); self.fixture(path)
+            target=path/'override.js'; target.unlink()
+            outside=Path(tmp)/'outside.js'; outside.write_bytes(b'fixture')
+            target.symlink_to(outside)
+            with self.assertRaisesRegex(b.BuildError, 'Symlink artifact'): p.verified_files(path)
+
     def fake_api(self, *, advance=False):
         calls=[]; reads=0
         def api(path,payload=None,method=None,missing_ok=False):

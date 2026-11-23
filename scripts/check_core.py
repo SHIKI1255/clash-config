@@ -34,7 +34,7 @@ def run(binary: Path, release: Path, geodata: Path, output: Path):
     shutil.copytree(release/'rules', output/'ruleset/personal-clash')
     fixture = {'proxies': [], 'proxy-groups': [{'name': 'Fixture', 'type': 'select', 'proxies': ['DIRECT']}],
                'rules': ['MATCH,DIRECT'], 'ipv6': False}
-    js = "const fs=require('fs'),vm=require('vm');const x=JSON.parse(fs.readFileSync(0,'utf8'));const c={config:x.config};vm.createContext(c);vm.runInContext(x.code+';result=main(config,\"Fixture\")',c,{timeout:2000});process.stdout.write(JSON.stringify(c.result));"
+    js = "const fs=require('node:fs'),vm=require('node:vm');const x=JSON.parse(fs.readFileSync(0,'utf8'));const c={config:x.config};vm.createContext(c);vm.runInContext(x.code+';result=main(config,\"Fixture\")',c,{timeout:2000});process.stdout.write(JSON.stringify(c.result));"
     result = subprocess.run(['node', '-e', js], input=json.dumps({'config': fixture, 'code': (release/'override.js').read_text(encoding='utf-8')}),
                             capture_output=True, text=True, encoding='utf-8', check=True)
     config = json.loads(result.stdout)
