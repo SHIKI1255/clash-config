@@ -296,7 +296,7 @@
     "telegram": 46,
     "tiktok": 38,
     "twitter": 33,
-    "voice": 411
+    "voice": 444
   },
   "removed_exact_duplicates": 12368,
   "routing_cases": [
@@ -3277,9 +3277,9 @@
       "policy": "PROXY"
     }
   ],
-  "rules": 14580,
+  "rules": 14613,
   "schema_version": 2,
-  "shared_version": "f68e6a0b8d3bff36654436d1dcbc60ef313e94d81716a59edf8bdf1c498f893b",
+  "shared_version": "3a8099072ed13ffe8e5f7b8ae91df7e94b5591cecf3f2a131dc50bb4b5273084",
   "source_files_sha256": {
     "config/bootstrap.json": "5f834887b0a8ceccef89682902d0197255f3f037619182770f7ddde51e313574",
     "config/override.js": "5d6544a9e28c50a434bf8186b4a5fe843879cbbd2c8137bb3d0dae35abdf2891",
@@ -3304,5 +3304,5 @@
     "tests/test_version_probe.py": "f9f93ebdedd69c1ab8537f576832ea8da5538c03d6a40afcd663ffde548989c1"
   },
   "validation": "Static generation verified; client parsing and real network acceptance are separate.",
-  "voice_ip_cases": 411
+  "voice_ip_cases": 444
 }
