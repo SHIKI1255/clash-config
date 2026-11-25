@@ -1,26 +1,26 @@
 {
   "providers": {
-    "apple": 1592,
-    "bilibili": 129,
-    "china": 3657,
+    "apple": 1696,
+    "bilibili": 49,
+    "china": 8039,
     "claude": 19,
-    "copilot": 16,
-    "crypto": 204,
+    "crypto": 241,
     "gemini": 50,
-    "github": 30,
-    "google": 700,
-    "microsoft": 668,
+    "github": 61,
+    "google": 894,
+    "microsoft": 741,
     "openai": 21,
     "personal_direct": 24,
-    "personal_proxy": 40,
-    "proxy": 6792,
-    "steam": 69,
-    "steam_cn": 17,
-    "telegram": 46,
+    "personal_proxy": 55,
+    "proxy": 5495,
+    "steam": 41,
+    "steam_cn": 20,
+    "telegram": 35,
     "tiktok": 38,
-    "twitter": 33,
-    "voice": 444
+    "twitter": 23,
+    "voice": 444,
+    "xai": 5
   },
-  "rules": 14613,
-  "shared_version": "3a8099072ed13ffe8e5f7b8ae91df7e94b5591cecf3f2a131dc50bb4b5273084"
+  "rules": 18015,
+  "shared_version": "044f44dc6172de33511944371506d8881d4f25f7f6beb1e3e4eefff1f7002064"
 }

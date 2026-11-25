@@ -48,5 +48,5 @@ PROCESS-NAME 的 DIRECT 只决定出口，不代表绕过 TUN。原 GeekSpeed �
 
 ## 公共规则统一迁移
 
-首次需手动同步本地覆写或恢复新版完整备份；只刷新规则不会将旧 provider 名称改为 shiki_。新版有 20 个有效 provider，保留 3 个旧补充 URL 兼容文件；旧覆写仍可下载。缓存路径不变。
+首次需手动同步本地覆写或恢复新版完整备份；只刷新规则不会将旧 provider 名称改为 shiki_ 或同步新增/精简后的分类。v2 架构保留 20 个有效 provider（移除旧 `copilot`，新增 `xai`），并为 4 个旧 URL（`apple_domains`、`proxy_domains`、`china_domains`、`copilot`）继续返回空兼容占位文件；旧覆写刷新不报 404，新覆写不加载它们。缓存路径与订阅地址不变。
 三端公共修改在 https://github.com/SHIKI1255/shadowrocket-config/tree/main/shared；本地完整恢复包含凭据，仅在本机交付。禁止上传 GitHub。
