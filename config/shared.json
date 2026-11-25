@@ -23,11 +23,11 @@
       "policy": "PROXY"
     },
     {
-      "id": "voice",
+      "id": "xai",
       "policy": "PROXY"
     },
     {
-      "id": "copilot",
+      "id": "voice",
       "policy": "PROXY"
     },
     {

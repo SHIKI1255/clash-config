@@ -6,7 +6,7 @@
 
 下载[无凭据覆写包](https://raw.githubusercontent.com/SHIKI1255/clash-config/release/clash-overlay.zip)，按[安装说明](docs/install.md)复制缓存，先装 guard.yaml 再装 override.js，由你手动激活。它不是 Verge 原生完整备份 ZIP。
 
-新版加载 20 个 shiki_ 分类资源。23 份缓存文件中包含 3 个旧地址兼容文件；不增加节点组。脚本失败或未知主组时保留本地保护并拒绝其他业务，不能恢复机场分流。
+新版加载 20 个 shiki_ 分类资源（v2 架构已移除旧 copilot 外部源并新增 xai）。24 份缓存文件中包含 4 个旧地址兼容文件（`apple_domains`、`proxy_domains`、`china_domains`、`copilot`）；不增加节点组。脚本失败或未知主组时保留本地保护并拒绝其他业务，不能恢复机场分流。
 
 保留 Fake-IP、国内/境外 DNS 路径、节点独立解析、MetaCubeX geodata。Clash 的 classical DNS 域名提示为预期提示；语音 IP 不参与 DNS 选择。局域网共享、端口、TUN、IPv6 均由客户端界面管理。
 

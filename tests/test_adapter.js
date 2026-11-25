@@ -122,7 +122,8 @@ test('provider main DIRECT choice is preserved', () => {
 test('DNS policy order follows business rule sources', () => {
   const c = apply(fixture('Provider'), 'Provider').config;
   const a = Object.keys(c.dns['nameserver-policy']);
-  assert.ok(a.indexOf('rule-set:shiki_copilot') < a.indexOf('rule-set:shiki_microsoft'));
+  assert.ok(a.indexOf('rule-set:shiki_personal_proxy') < a.indexOf('rule-set:shiki_microsoft'));
+  assert.ok(a.indexOf('rule-set:shiki_github') < a.indexOf('rule-set:shiki_microsoft'));
   assert.ok(a.indexOf('rule-set:shiki_steam_cn') < a.indexOf('rule-set:shiki_steam'));
 });
 test('voice stays in routing while only its DNS selector disappears', () => {

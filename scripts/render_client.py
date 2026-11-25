@@ -6,7 +6,7 @@ def render(root,client,payload,contract):
     data=payload["platforms"][client]
     require(data['providers']==contract['providers'], 'Provider/order contract changed; update local overlay deliberately')
     require(data['guard']==json.loads((root/'config/bootstrap.json').read_text(encoding='utf-8')), 'Local guard contract changed')
-    require(set(data['rules'])=={d['id'] for d in data['providers']}|{'apple_domains','proxy_domains','china_domains'},'Resource inventory changed')
+    require(set(data['rules'])=={d['id'] for d in data['providers']}|{'apple_domains','proxy_domains','china_domains','copilot'},'Resource inventory changed')
     template=(root/'config/override.js').read_text(encoding='utf-8')
     for marker in ('__PROVIDERS_JSON__','__BASELINE_JSON__'): require(template.count(marker)==1,'Invalid adapter marker')
     files={'rules/'+name+'.list':text.encode() for name,text in data['rules'].items()}
